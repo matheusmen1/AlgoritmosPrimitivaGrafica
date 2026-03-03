@@ -1,0 +1,4 @@
+D:\ProcessamentoImagens\ProcessamentoImagens\obj\Release\ProcessamentoImagens.frmPrincipal.resources
+D:\ProcessamentoImagens\ProcessamentoImagens\obj\Release\ProcessamentoImagens.Properties.Resources.resources
+D:\ProcessamentoImagens\ProcessamentoImagens\obj\Release\AlgoritmosPrimitivaGrafica.csproj.GenerateResource.cache
+D:\ProcessamentoImagens\ProcessamentoImagens\obj\Release\AlgoritmosPrimitivaGrafica.csproj.CoreCompileInputs.cache
