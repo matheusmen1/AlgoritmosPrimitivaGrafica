@@ -39,3 +39,14 @@ C:\Users\mathe\Downloads\AlgoritmosPrimitivaGrafica\AlgoritmosPrimitivaGrafica\P
 C:\Users\mathe\Downloads\AlgoritmosPrimitivaGrafica\AlgoritmosPrimitivaGrafica\ProcessamentoImagens\obj\Debug\AlgoritmosPrimitivaGrafica.csproj.CoreCompileInputs.cache
 C:\Users\mathe\Downloads\AlgoritmosPrimitivaGrafica\AlgoritmosPrimitivaGrafica\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.exe
 C:\Users\mathe\Downloads\AlgoritmosPrimitivaGrafica\AlgoritmosPrimitivaGrafica\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.pdb
+C:\Users\mathe\Downloads\AlgoritmosPrimitivaGrafica\ProcessamentoImagens\bin\Debug\ProcessamentoImagens.exe.config
+C:\Users\mathe\Downloads\AlgoritmosPrimitivaGrafica\ProcessamentoImagens\bin\Debug\ProcessamentoImagens.exe
+C:\Users\mathe\Downloads\AlgoritmosPrimitivaGrafica\ProcessamentoImagens\bin\Debug\ProcessamentoImagens.pdb
+C:\Users\mathe\Downloads\AlgoritmosPrimitivaGrafica\ProcessamentoImagens\obj\Debug\AlgoritmosPrimitivaGrafica.csproj.AssemblyReference.cache
+C:\Users\mathe\Downloads\AlgoritmosPrimitivaGrafica\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.exe.config
+C:\Users\mathe\Downloads\AlgoritmosPrimitivaGrafica\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.frmPrincipal.resources
+C:\Users\mathe\Downloads\AlgoritmosPrimitivaGrafica\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.Properties.Resources.resources
+C:\Users\mathe\Downloads\AlgoritmosPrimitivaGrafica\ProcessamentoImagens\obj\Debug\AlgoritmosPrimitivaGrafica.csproj.GenerateResource.cache
+C:\Users\mathe\Downloads\AlgoritmosPrimitivaGrafica\ProcessamentoImagens\obj\Debug\AlgoritmosPrimitivaGrafica.csproj.CoreCompileInputs.cache
+C:\Users\mathe\Downloads\AlgoritmosPrimitivaGrafica\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.exe
+C:\Users\mathe\Downloads\AlgoritmosPrimitivaGrafica\ProcessamentoImagens\obj\Debug\ProcessamentoImagens.pdb

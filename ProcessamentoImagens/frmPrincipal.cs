@@ -8,7 +8,6 @@ namespace ProcessamentoImagens
 {
     public partial class frmPrincipal : Form
     {
-        private Image image;
         private Bitmap imageBitmap;
 
 
@@ -32,49 +31,24 @@ namespace ProcessamentoImagens
         {
             Filtros.imagemBranca(imageBitmap);
             pictBoxImg1.Image = imageBitmap;
+            pictBoxImg1.Refresh(); // força redesenho
 
-            //
-            
+            // tira seleção dos botões
+            btnEquacaoReta.Checked = false;
+            btnDDA.Checked = false;
+            btnPontoMedioRetas.Checked = false;
 
+            btnEquacaoCircunferencia.Checked = false;
+            btnTrigonometria.Checked = false;
+            btnPontoMedioCircunferencia.Checked = false;
+
+            btnPontoMedioElipse.Checked = false;
+
+            posInicial = Point.Empty;
+            posFinal = Point.Empty;
         }
 
-        private void btnEquacaoReta_CheckedChanged(object sender, EventArgs e)
-        {
-            Filtros.bresenham(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y);
-            pictBoxImg1.Refresh();
-
-        }
-
-        private void btnDDA_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPontoMedioRetas_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPontoMedioElipse_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnEquacaoCircunferencia_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnTrigonometria_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPontoMedioCircunferencia_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
 
 
         //capturar posição mouse
@@ -91,8 +65,47 @@ namespace ProcessamentoImagens
         {
             if (e.Button == MouseButtons.Left)
             {
-                posFinal = e.Location; // Salva a posição ao soltar
+                posFinal = e.Location;
                 Console.WriteLine($"Fim: {posFinal.X}, {posFinal.Y}");
+
+                //chama os algoritmos de acordo com o botão selecionado
+
+                // retas
+                if (btnEquacaoReta.Checked)
+                {
+                    Filtros.EquacaoReta(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y);
+                }
+                else if (btnDDA.Checked)
+                {
+                    Filtros.DDA(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y);
+                }
+                else if (btnPontoMedioRetas.Checked)
+                {
+                    Filtros.bresenham(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y);
+                }
+
+                //circunferências
+                if (btnEquacaoCircunferencia.Checked)
+                {
+                    //Filtros.circunferenciaEquacao(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y);
+                }
+                else if (btnTrigonometria.Checked)
+                {
+                    //Filtros.circunferenciaTrigonometria(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y);
+                }
+                else if (btnPontoMedioCircunferencia.Checked)
+                {
+                    //Filtros.circunferenciaPontoMedio(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y);
+                }
+
+                //elipses
+                if (btnPontoMedioElipse.Checked)
+                {
+                    //Filtros.elipsePontoMedio(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y);
+                }
+
+
+                pictBoxImg1.Refresh();
             }
         }
 
