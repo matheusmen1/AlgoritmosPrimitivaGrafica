@@ -196,6 +196,93 @@ namespace ProcessamentoImagens
         }
 
 
+
+
+        //================================= ELIPSE =================================
+
+
+        unsafe private static void PontosElipse(byte* src, int stride, int width, int height, int x, int y, int xc, int yc, int valor)
+        {
+            PintaPixel(src, stride, width, height, xc + x, yc + y, valor);
+            PintaPixel(src, stride, width, height, xc - x, yc + y, valor);
+            PintaPixel(src, stride, width, height, xc - x, yc - y, valor);
+            PintaPixel(src, stride, width, height, xc + x, yc - y, valor);
+        }
+        unsafe private static void MidpointElipse(byte* src, int stride, int width, int height, int a, int b, int xc, int yc, int color)
+        {
+            int x, y;
+            double d1, d2;
+            /* Valores iniciais */
+            x = 0;
+            y = b;
+            d1 = b*b - a*a*b + (a*a) / 4.0;
+            PontosElipse(src, stride, width, height, x, y, xc, yc, color); /* Simetria de ordem 4 */
+            while (a * a * (y - 0.5) > b * b * (x + 1))
+            {
+                /* Regi~ao 1 */
+                if (d1 < 0) { 
+                    d1 = d1 + b * b * (2 * x + 3);
+                    x++;
+                }else
+                {
+                    d1 = d1 + b * b * (2 * x + 3) + a * a * (-2 * y + 2);
+                    x++;
+                    y--;
+                }
+                PontosElipse(src, stride, width, height, x, y, xc, yc, color);
+            }
+            d2 = b* b *(x + 0.5) * (x + 0.5) + a * a * (y - 1) * (y - 1) - a * a * b * b;
+            while(y > 0)
+            {
+                /* Regi~ao 2 */
+                if (d2< 0)
+                {
+                    d2 = d2 + b* b *(2 * x + 2) + a * a * (-2 * y + 3);
+                    x++;
+                    y--;
+                }
+                else
+                {
+                    d2 = d2 + a* a *(-2 * y + 3);
+                    y--;
+                }/*end if*/
+                PontosElipse(src, stride, width, height, x, y, xc, yc, color);
+            }
+        }
+
+        public static void elipsePontoMedio(Bitmap imgBitmap, int x1, int y1, int x2, int y2)
+        {
+            int width = imgBitmap.Width;
+            int height = imgBitmap.Height;
+
+            BitmapData img = imgBitmap.LockBits(new Rectangle(0, 0, width, height),
+                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+            //calcula os semi-eixos a e b (raios)
+            int a = Math.Abs(x2-x1);
+            int b = Math.Abs(y2 - y1);
+
+            // Calcular o centro da elipse (xc, yc)
+            int xc = x1; // Aqui você pode definir o centro de acordo com sua necessidade
+            int yc = y1;
+
+            unsafe
+            {
+                byte* src = (byte*)img.Scan0.ToPointer();
+
+                MidpointElipse(src, img.Stride, width, height, a, b, xc, yc, 0);
+            }
+
+            imgBitmap.UnlockBits(img);
+        }
+
+        //===================================================================================================================
+
+
+
+
+
+
         public static void EquacaoReta(Bitmap imgBitmap, int x1, int y1, int x2, int y2)
         {
             int width = imgBitmap.Width;
@@ -340,7 +427,7 @@ namespace ProcessamentoImagens
             }
             imgBitmap.UnlockBits(img);
         }
-        public static void bresenham(Bitmap imgBitmap, int x1, int y1, int x2, int y2)
+        public static void bresenham(Bitmap imgBitmap, int x1, int y1, int x2, int y2, int cor)
         {
             int width = imgBitmap.Width;
             int height = imgBitmap.Height;
@@ -422,7 +509,7 @@ namespace ProcessamentoImagens
                         byte* pixel = origem + py * img.Stride + px * pixelSize;
 
                         // Define o pixel como preto
-                        pixel[0] = pixel[1] = pixel[2] = 0;
+                        pixel[0] = pixel[1] = pixel[2] = (byte)cor;
                     }
 
                     // Atualiza o erro
@@ -469,6 +556,7 @@ namespace ProcessamentoImagens
             }
             imgBitmap.UnlockBits(img);
 
-        }
+        }    
+    
     }
 }

@@ -1,44 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 
 namespace ProcessamentoImagens.classes
 {
     internal class Poligono
     {
-        private List<Point> vertices { get; set; }
-        private double[,] matrizTransformacao { get; set; }
+        private List<Reta> Arestas { get; set; }
+        private double[,] MatrizTransformacao { get; set; }
 
         public Poligono()
         {
-            vertices = new List<Point>();
-            matrizTransformacao = new double[3, 3];
+            Arestas = new List<Reta>();
+            MatrizTransformacao = new double[3, 3];
 
             GerarMatrizIdentidade();
         }
 
+        public Reta GetAresta(int pos)
+        {
+            if(pos>-1 && pos<Arestas.Count)
+                return Arestas[pos];
+            return null;
+        }
+
+        public void AddAresta(Reta r)
+        {
+            Arestas.Add(r);
+        }
+
+        public void ClearPoligono()
+        {
+            Arestas.Clear();
+        }
+
+        public int CountArestas()
+        {
+            return Arestas.Count;
+        }
 
         private void GerarMatrizIdentidade()
         {
             for (int i = 0; i < 3; i++)
                 for (int j = 0; j < 3; j++)
                     if (i == j)
-                        matrizTransformacao[i, j] = 1;
+                        MatrizTransformacao[i, j] = 1;
                     else
-                        matrizTransformacao[i, j] = 0;
-        }
-
-        private Point? GetVertice(int pos)
-        {
-            if(pos>=0 && pos < vertices.Count)
-                return vertices[pos];
-            return null;
+                        MatrizTransformacao[i, j] = 0;
         }
 
         private Double? GetMatrizXY(int x,int y)
         {
             if(x>=0 && y>=0 && x<3 && y < 3)
-                return matrizTransformacao[x, y];
+                return MatrizTransformacao[x, y];
             return null;
         }
     }
