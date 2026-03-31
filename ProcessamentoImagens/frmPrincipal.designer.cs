@@ -92,9 +92,9 @@
             this.groupBoxRetas.Controls.Add(this.btnDDA);
             this.groupBoxRetas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxRetas.Location = new System.Drawing.Point(10, 2);
-            this.groupBoxRetas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxRetas.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxRetas.Name = "groupBoxRetas";
-            this.groupBoxRetas.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxRetas.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxRetas.Size = new System.Drawing.Size(147, 110);
             this.groupBoxRetas.TabIndex = 118;
             this.groupBoxRetas.TabStop = false;
@@ -143,9 +143,9 @@
             this.groupBoxCircubferencia.Controls.Add(this.btnEquacaoCircunferencia);
             this.groupBoxCircubferencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxCircubferencia.Location = new System.Drawing.Point(10, 116);
-            this.groupBoxCircubferencia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxCircubferencia.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxCircubferencia.Name = "groupBoxCircubferencia";
-            this.groupBoxCircubferencia.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxCircubferencia.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxCircubferencia.Size = new System.Drawing.Size(147, 110);
             this.groupBoxCircubferencia.TabIndex = 119;
             this.groupBoxCircubferencia.TabStop = false;
@@ -192,9 +192,9 @@
             this.groupBoxElipse.Controls.Add(this.btnPontoMedioElipse);
             this.groupBoxElipse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxElipse.Location = new System.Drawing.Point(10, 230);
-            this.groupBoxElipse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxElipse.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxElipse.Name = "groupBoxElipse";
-            this.groupBoxElipse.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBoxElipse.Padding = new System.Windows.Forms.Padding(2);
             this.groupBoxElipse.Size = new System.Drawing.Size(147, 58);
             this.groupBoxElipse.TabIndex = 120;
             this.groupBoxElipse.TabStop = false;
@@ -221,9 +221,7 @@
             this.pictBoxImg1.TabIndex = 110;
             this.pictBoxImg1.TabStop = false;
             this.pictBoxImg1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictBoxImg1_MouseClick);
-            //this.pictBoxImg1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictBoxImg1_MouseDown);
             this.pictBoxImg1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictBoxImg1_MouseMove);
-            //this.pictBoxImg1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictBoxImg1_MouseUp);
             // 
             // flowLayoutPanel2
             // 
@@ -260,6 +258,7 @@
             this.listViewPoligono.Size = new System.Drawing.Size(149, 94);
             this.listViewPoligono.TabIndex = 1;
             this.listViewPoligono.UseCompatibleStateImageBehavior = false;
+            this.listViewPoligono.SelectedIndexChanged += new System.EventHandler(this.listViewPoligono_SelectedIndexChanged);
             // 
             // btnAddPoligono
             // 

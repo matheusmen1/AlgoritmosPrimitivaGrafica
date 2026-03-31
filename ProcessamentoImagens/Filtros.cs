@@ -427,7 +427,7 @@ namespace ProcessamentoImagens
             }
             imgBitmap.UnlockBits(img);
         }
-        public static void bresenham(Bitmap imgBitmap, int x1, int y1, int x2, int y2, int cor)
+        public static void Bresenham(Bitmap imgBitmap, int x1, int y1, int x2, int y2, int R, int G, int B)
         {
             int width = imgBitmap.Width;
             int height = imgBitmap.Height;
@@ -508,8 +508,10 @@ namespace ProcessamentoImagens
                     {
                         byte* pixel = origem + py * img.Stride + px * pixelSize;
 
-                        // Define o pixel como preto
-                        pixel[0] = pixel[1] = pixel[2] = (byte)cor;
+                        // Define o pixel com a cor recebida por parâmetro
+                        pixel[0] = (byte)B;
+                        pixel[1] = (byte)G;
+                        pixel[2] = (byte)R;
                     }
 
                     // Atualiza o erro
@@ -526,6 +528,7 @@ namespace ProcessamentoImagens
             // Libera o acesso à memória da imagem
             imgBitmap.UnlockBits(img);
         }
+
         public static void imagemBranca(Bitmap imgBitmap)
         {
             int width = imgBitmap.Width;
@@ -551,12 +554,8 @@ namespace ProcessamentoImagens
                         pixel[2] = 255;
                     }
                 }
-
-
             }
             imgBitmap.UnlockBits(img);
-
-        }    
-    
+        }
     }
 }

@@ -48,11 +48,21 @@ namespace ProcessamentoImagens.classes
                         MatrizTransformacao[i, j] = 0;
         }
 
-        private Double? GetMatrizXY(int x,int y)
+        public Double? GetMatrizXY(int x,int y)
         {
             if(x>=0 && y>=0 && x<3 && y < 3)
                 return MatrizTransformacao[x, y];
             return null;
+        }
+
+        public override string ToString()
+        {
+            string retorno =  $"{Arestas.Count}";
+            for(int i=0; i<Arestas.Count; i++)
+            {
+                retorno += $"|{Arestas[i].GetIniX()},{Arestas[i].GetIniY()}|{Arestas[i].GetFimX()},{Arestas[i].GetFimY()}";
+            }
+            return retorno;
         }
     }
 }
