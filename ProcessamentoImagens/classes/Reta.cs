@@ -4,49 +4,49 @@ namespace ProcessamentoImagens.classes
 {
     internal class Reta
     {
-        private Point ini { get; set; }
-        private Point fim { get; set; }
+        private Point Ini { get; set; }
+        private Point Fim { get; set; }
 
         public Reta()
         {
             // inicializando os pontos da minha reta
-            ini = new Point(-1,-1);
-            fim = new Point(-1,-1);
+            Ini = new Point(-1,-1);
+            Fim = new Point(-1,-1);
         }
 
         public Reta(Point ini, Point fim)
         {
-            this.ini = ini;
-            this.fim = fim;
+            this.Ini = ini;
+            this.Fim = fim;
         }
 
         public Point GetIni()
         {
-            return ini;
+            return Ini;
         }
 
         public Point GetFim()
         {
-            return fim;
+            return Fim;
         }
 
         public int GetIniX()
         {
-            return ini.X;
+            return Ini.X;
         }
         public int GetIniY()
         {
-            return ini.Y;
+            return Ini.Y;
         }
 
         public int GetFimX()
         {
-            return fim.X;
+            return Fim.X;
         }
 
         public int GetFimY()
         {
-            return fim.Y;
+            return Fim.Y;
         }
 
     }

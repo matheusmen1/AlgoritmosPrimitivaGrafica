@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classes\Circunferencia.cs" />
+    <Compile Include="classes\Elipse.cs" />
     <Compile Include="classes\Poligono.cs" />
     <Compile Include="classes\Reta.cs" />
     <Compile Include="Filtros.cs" />

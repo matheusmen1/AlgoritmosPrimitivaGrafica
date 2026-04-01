@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|c:\\users\\gabriel\\documents\\faculdade\\termo-7\\cg_computacaografica\\trabalho1bi\\algoritmosprimitivagrafica-19712111\\algoritmosprimitivagrafica\\processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,7 +11,7 @@
       "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|c:\\users\\gabriel\\documents\\faculdade\\termo-7\\cg_computacaografica\\trabalho1bi\\algoritmosprimitivagrafica-19712111\\algoritmosprimitivagrafica\\processamentoimagens\\frmprincipal.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\processamentoimagens\\frmprincipal.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\frmprincipal.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -19,12 +19,8 @@
       "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\filtros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\processamentoimagens\\classes\\poligono.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\classes\\poligono.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\processamentoimagens\\classes\\reta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\classes\\reta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|c:\\users\\gabriel\\documents\\faculdade\\termo-7\\cg_computacaografica\\trabalho1bi\\algoritmosprimitivagrafica-19712111\\algoritmosprimitivagrafica\\processamentoimagens\\classes\\elipse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\classes\\elipse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,76 +30,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmPrincipal.designer.cs",
-              "DocumentMoniker": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\frmPrincipal.designer.cs",
-              "RelativeDocumentMoniker": "ProcessamentoImagens\\frmPrincipal.designer.cs",
-              "ToolTip": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\frmPrincipal.designer.cs",
-              "RelativeToolTip": "ProcessamentoImagens\\frmPrincipal.designer.cs",
-              "ViewState": "AgIAAO8AAAAAAAAAAAAiwAMBAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-31T20:44:36.201Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Reta.cs",
-              "DocumentMoniker": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\classes\\Reta.cs",
-              "RelativeDocumentMoniker": "ProcessamentoImagens\\classes\\Reta.cs",
-              "ToolTip": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\classes\\Reta.cs",
-              "RelativeToolTip": "ProcessamentoImagens\\classes\\Reta.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-31T17:47:41.96Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Poligono.cs",
-              "DocumentMoniker": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\classes\\Poligono.cs",
-              "RelativeDocumentMoniker": "ProcessamentoImagens\\classes\\Poligono.cs",
-              "ToolTip": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\classes\\Poligono.cs",
-              "RelativeToolTip": "ProcessamentoImagens\\classes\\Poligono.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-31T17:47:05.796Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "frmPrincipal.cs",
-              "DocumentMoniker": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\frmPrincipal.cs",
-              "RelativeDocumentMoniker": "ProcessamentoImagens\\frmPrincipal.cs",
-              "ToolTip": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\frmPrincipal.cs",
-              "RelativeToolTip": "ProcessamentoImagens\\frmPrincipal.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAUwEUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T13:08:04.969Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Filtros.cs",
-              "DocumentMoniker": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\Filtros.cs",
-              "RelativeDocumentMoniker": "ProcessamentoImagens\\Filtros.cs",
-              "ToolTip": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\Filtros.cs",
-              "RelativeToolTip": "ProcessamentoImagens\\Filtros.cs",
-              "ViewState": "AgIAAOkBAAAAAAAAAAAiwAUCAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T13:08:05.244Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -116,6 +47,58 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-24T13:08:05.457Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmPrincipal.cs",
+              "DocumentMoniker": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\frmPrincipal.cs",
+              "RelativeDocumentMoniker": "ProcessamentoImagens\\frmPrincipal.cs",
+              "ToolTip": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\frmPrincipal.cs",
+              "RelativeToolTip": "ProcessamentoImagens\\frmPrincipal.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGgBAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T13:08:04.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmPrincipal.designer.cs",
+              "DocumentMoniker": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\frmPrincipal.designer.cs",
+              "RelativeDocumentMoniker": "ProcessamentoImagens\\frmPrincipal.designer.cs",
+              "ToolTip": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\frmPrincipal.designer.cs",
+              "RelativeToolTip": "ProcessamentoImagens\\frmPrincipal.designer.cs",
+              "ViewState": "AgIAAOoBAAAAAAAAAAAMwP4BAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-31T20:44:36.201Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Elipse.cs",
+              "DocumentMoniker": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\classes\\Elipse.cs",
+              "RelativeDocumentMoniker": "ProcessamentoImagens\\classes\\Elipse.cs",
+              "ToolTip": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\classes\\Elipse.cs",
+              "RelativeToolTip": "ProcessamentoImagens\\classes\\Elipse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T14:11:12.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Filtros.cs",
+              "DocumentMoniker": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\Filtros.cs",
+              "RelativeDocumentMoniker": "ProcessamentoImagens\\Filtros.cs",
+              "ToolTip": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\Filtros.cs",
+              "RelativeToolTip": "ProcessamentoImagens\\Filtros.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAiwAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T13:08:05.244Z",
+              "EditorCaption": ""
             }
           ]
         }

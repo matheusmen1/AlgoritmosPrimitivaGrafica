@@ -13,33 +13,45 @@ namespace ProcessamentoImagens
         private Bitmap imageBitmap;
 
         private Point posInicial = new Point(-1, -1);
-        private Point posFinal = new Point(-1,-1);
-        private Point posAnt = new Point(-1,-1);
-        private List<Point> retasIni = new List<Point>();
-        private List<Point> retasFim = new List<Point>();
-        private List<Poligono> poligonos = new List<Poligono>();
+        private Point posFinal = new Point(-1, -1);
+        private Point posFinalElipse = new Point(-1, -1);
+        private Point posAnt = new Point(-1, -1);
+        private Elipse elipseTemp = new Elipse();
         private Poligono poligonoTemp = new Poligono();
+
+        // Listas para armazenar as primitivas gráficas
+        private List<Reta> retas = new List<Reta>();
+        private List<Circunferencia> circunferencias = new List<Circunferencia>();
+        private List<Elipse> elipses = new List<Elipse>();
+        private List<Poligono> poligonos = new List<Poligono>();
 
         // flags para estruturação de controle de desenho
         private bool addPoligono = false;
-        private bool reta = false;
+        private bool addReta = false;
+        private bool addCirc = false;
+        private bool addElipse = false;
+        private bool add2Elipse = false;
 
         public frmPrincipal()
         {
             InitializeComponent();
 
-            imageBitmap = new Bitmap(pictBoxImg1.ClientSize.Width,pictBoxImg1.ClientSize.Height,PixelFormat.Format24bppRgb);
+            imageBitmap = new Bitmap(pictBoxImg1.ClientSize.Width, pictBoxImg1.ClientSize.Height, PixelFormat.Format24bppRgb);
 
-            Filtros.imagemBranca(imageBitmap);
+            Filtros.ImagemBranca(imageBitmap);
 
             pictBoxImg1.SizeMode = PictureBoxSizeMode.Normal;
             pictBoxImg1.Image = imageBitmap;
-            listViewPoligono.View = View.List;
+            
+            //definição do listView dos polígonos
+            listViewPoligono.View = View.Details;
+            listViewPoligono.HeaderStyle = ColumnHeaderStyle.None; // esconde o cabeçalho
+            listViewPoligono.Columns.Add("", listViewPoligono.ClientSize.Width); // coluna ocupa tudo
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-            Filtros.imagemBranca(imageBitmap);
+            Filtros.ImagemBranca(imageBitmap);
             pictBoxImg1.Image = imageBitmap;
             pictBoxImg1.Refresh(); // força redesenho
 
@@ -61,15 +73,20 @@ namespace ProcessamentoImagens
             posFinal.X = -1;
             posFinal.Y = -1;
 
-            //inicializar as listas de retas
-            retasIni.Clear();
-            retasFim.Clear();
-
-            //inicializar as listas de polígonos
+            //inicializar as listas
+            retas.Clear();
             poligonos.Clear();
+            circunferencias.Clear();
+            elipses.Clear();
 
             //inicializar o polígono temporário
             poligonoTemp = new Poligono();
+
+            //inicializar a elipse temporária
+            elipseTemp = new Elipse();
+
+            //inicializar o listView
+            listViewPoligono.Items.Clear();
         }
 
         private void ControlarBotoes(bool flag)
@@ -84,10 +101,11 @@ namespace ProcessamentoImagens
 
             btnPontoMedioElipse.Enabled = flag;
             btnLimpar.Enabled = flag;
+
             btnCancelar.Visible = !flag;
         }
 
-        private void MudarBotaoADD(bool flag)
+        private void MudarBotaoADDPoligono(bool flag)
         {
             if (flag)
             {
@@ -104,7 +122,12 @@ namespace ProcessamentoImagens
 
         private void btnAddPoligono_Click(object sender, EventArgs e)
         {
-            AtivarAddPoligono();
+            addPoligono = !addPoligono;
+            posInicial.X = -1;
+            posInicial.Y = -1;
+
+            ControlarBotoes(!addPoligono);
+            MudarBotaoADDPoligono(addPoligono);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -112,71 +135,290 @@ namespace ProcessamentoImagens
             DesativarAddPoligono();
         }
 
-        private void AtivarAddReta()
-        {
-
-        }
-
-        private void DesativarAddReta()
-        {
-
-        }
-
-        private void AtivarAddPoligono()
-        {
-            addPoligono = !addPoligono;
-
-            ControlarBotoes(!addPoligono);
-            MudarBotaoADD(addPoligono);
-        }
-
         private void DesativarAddPoligono()
         {
             addPoligono = !addPoligono;
 
             ControlarBotoes(!addPoligono);
-            MudarBotaoADD(addPoligono);
+            MudarBotaoADDPoligono(addPoligono);
 
             //limpar as estruturas com o polígono temporário
             poligonoTemp.ClearPoligono();
-            Filtros.imagemBranca(imageBitmap);
+            Filtros.ImagemBranca(imageBitmap);
             Desenhar();
         }
 
         private void pictBoxImg1_MouseMove(object sender, MouseEventArgs e)
         {
-            if(posInicial.X > -1 && (reta || addPoligono)) //tenho alguma reta para desenhar
+            bool flag = false;
+            if(posInicial.X > -1)
             {
-                Point posTempFinal = new Point();
-                posTempFinal = e.Location;
+                if (addPoligono || addReta)
+                {
+                    flag = !flag;
+                    Point posTempFinal = new Point(e.Location.X, e.Location.Y);
 
-                //pintarei de branco a posInicial até posAnt
-                Filtros.Bresenham(imageBitmap, posInicial.X, posInicial.Y, posAnt.X, posAnt.Y, 255, 255, 255);
-                posAnt.X = posTempFinal.X;
-                posAnt.Y = posTempFinal.Y;
+                    //pintarei de branco a posInicial até posAnt
+                    Filtros.Bresenham(imageBitmap, posInicial.X, posInicial.Y, posAnt.X, posAnt.Y, 255, 255, 255);
+                    posAnt.X = posTempFinal.X;
+                    posAnt.Y = posTempFinal.Y;
 
-                //desenhar a reta imaginária
-                Filtros.Bresenham(imageBitmap, posInicial.X, posInicial.Y, posTempFinal.X, posTempFinal.Y, 180, 180, 180); //aresta temporária
-                pictBoxImg1.Refresh();
+                    //desenhar a reta imaginária
+                    Filtros.Bresenham(imageBitmap, posInicial.X, posInicial.Y, posTempFinal.X, posTempFinal.Y, 180, 180, 180); //aresta temporária
+                }
+                else if (addCirc)
+                {
+                    flag = !flag;
+                    Point posTempFinal = new Point(e.Location.X, e.Location.Y);
 
-                //desenhar todas as informações da tela
-                Desenhar();
+                    //pintarei de branco a posInicial até posAnt -> Circunferencia
+                    Filtros.CircunferenciaPontoMedio(imageBitmap, posInicial.X, posInicial.Y, posAnt.X, posAnt.Y, 255, 255, 255);
+                    Filtros.Bresenham(imageBitmap, posInicial.X, posInicial.Y, posAnt.X, posAnt.Y, 255, 255, 255);
+                    posAnt.X = posTempFinal.X;
+                    posAnt.Y = posTempFinal.Y;
+
+                    //desenhar a reta imaginária
+                    Filtros.CircunferenciaPontoMedio(imageBitmap, posInicial.X, posInicial.Y, posTempFinal.X, posTempFinal.Y, 180, 180, 180); //Circulo temporário
+                    Filtros.Bresenham(imageBitmap, posInicial.X, posInicial.Y, posTempFinal.X, posTempFinal.Y, 180, 180, 180); //aresta temporária
+                }
+                else if (addElipse && !add2Elipse)
+                {
+                    flag = !flag;
+                    // aqui é a exibição da reta na HORIZONTAL
+                    Point posTempFinal = new Point(e.Location.X, posInicial.Y);
+
+                    //pintarei de branco a posInicial até posAnt -> Circunferencia
+                    Filtros.CircunferenciaPontoMedio(imageBitmap, posInicial.X, posInicial.Y, posAnt.X, posAnt.Y, 255, 255, 255);
+                    Filtros.Bresenham(imageBitmap, posInicial.X, posInicial.Y, posAnt.X, posAnt.Y, 255, 255, 255);
+                    posAnt.X = posTempFinal.X;
+                    posAnt.Y = posTempFinal.Y;
+
+                    //desenhar a reta imaginária
+                    Filtros.CircunferenciaPontoMedio(imageBitmap, posInicial.X, posInicial.Y, posTempFinal.X, posTempFinal.Y, 180, 180, 180); //Circulo temporário
+                    Filtros.Bresenham(imageBitmap, posInicial.X, posInicial.Y, posTempFinal.X, posTempFinal.Y, 180, 180, 180); //aresta temporária
+                }
+                else if (add2Elipse)
+                {
+                    flag = !flag;
+                    // aqui é a exibição da reta na VERTICAL
+                    Point posTempFinal = new Point(posInicial.X, e.Location.Y);
+
+                    //pintarei de branco a posInicial até posAnt -> Circunferencia
+                    Filtros.ElipsePontoMedio(imageBitmap, posInicial.X, posInicial.Y, posFinalElipse.X, posFinalElipse.Y, posAnt.X, posAnt.Y, 255, 255, 255);
+                    Filtros.Bresenham(imageBitmap, posInicial.X, posInicial.Y, posAnt.X, posAnt.Y, 255, 255, 255);
+                    posAnt.X = posTempFinal.X;
+                    posAnt.Y = posTempFinal.Y;
+
+                    //desenhar a reta imaginária
+                    Filtros.ElipsePontoMedio(imageBitmap, posInicial.X, posInicial.Y, posFinalElipse.X, posFinalElipse.Y, posTempFinal.X, posTempFinal.Y, 180, 180, 180); //Circulo temporário
+                    Filtros.Bresenham(imageBitmap, posInicial.X, posInicial.Y, posTempFinal.X, posTempFinal.Y, 180, 180, 180); //aresta temporária
+                }
+                if(flag)
+                    Desenhar();
             }
         }
 
+        private void pictBoxImg1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (addPoligono)
+                {
+                    if (posInicial.X == -1) //primeiro ponto do polígono
+                    {
+                        posInicial = e.Location;
+                        posAnt = e.Location;
+                    }
+                    else
+                    {
+                        posFinal = e.Location;
+                        poligonoTemp.AddAresta(new Reta(posInicial, posFinal));
+                        posInicial = posFinal;
+                    }
+                }
+                else if (btnEquacaoReta.Checked || btnDDA.Checked || btnPontoMedioRetas.Checked)
+                {
+                    if (!addReta)//não tá ativado é primeiro ponto
+                    {
+                        addReta = true;
+                        posInicial = e.Location;
+                        posAnt = e.Location;
+                    }
+                    else
+                    {
+                        posFinal = e.Location;
+                        if (btnEquacaoReta.Checked)
+                        {
+                            Filtros.EquacaoReta(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y);
+                        }
+                        else if (btnDDA.Checked)
+                        {
+                            Filtros.DDA(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y);
+                        }
+                        else if (btnPontoMedioRetas.Checked)
+                        {
+                            Filtros.Bresenham(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y, 0, 0, 0);
+                        }
+
+                        Point iniTemp = new Point(posInicial.X, posInicial.Y);
+                        Point fimTemp = new Point(posFinal.X, posFinal.Y);
+                        Reta reta = new Reta(iniTemp, fimTemp);
+                        retas.Add(reta);
+
+                        //inicializar como não tendo mais nenhum ponto
+                        posInicial.X = -1;
+                        posInicial.Y = -1;
+                        addReta = false;
+                    }
+                }
+                else if (btnEquacaoCircunferencia.Checked || btnTrigonometria.Checked || btnPontoMedioCircunferencia.Checked)
+                {
+                    if (!addCirc)//não tá ativado é primeiro ponto
+                    {
+                        addCirc = true;
+                        posInicial = e.Location;
+                        posAnt = e.Location;
+                    }
+                    else
+                    {
+                        posFinal = e.Location;
+                        if (btnEquacaoCircunferencia.Checked)
+                        {
+                            Filtros.CircunferenciaEquacao(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y);
+                        }
+                        else if (btnTrigonometria.Checked)
+                        {
+                            Filtros.CircunferenciaTrigonometria(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y);
+                        }
+                        else if (btnPontoMedioCircunferencia.Checked)
+                        {
+                            Filtros.CircunferenciaPontoMedio(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y, 0, 0, 0);
+                        }
+
+                        Point iniTemp = new Point(posInicial.X, posInicial.Y);
+                        Point fimTemp = new Point(posFinal.X, posFinal.Y);
+                        Reta reta = new Reta(iniTemp, fimTemp);
+                        Circunferencia c = new Circunferencia(reta);
+                        circunferencias.Add(c);
+
+                        //inicializar como não tendo mais nenhum ponto
+                        posInicial.X = -1;
+                        posInicial.Y = -1;
+                        addCirc = false;
+                    }
+                }
+                else if (btnPontoMedioElipse.Checked)
+                {
+                    if (!addElipse)//não tá ativado é primeiro ponto
+                    {
+                        addElipse = true;
+                        posInicial = e.Location;
+                        posAnt = e.Location;
+                    }
+                    else
+                    {
+                        if (!add2Elipse)
+                        {
+                            // PEGAR O SEGUNDO PONTO -> final da primeira reta 
+                            posFinalElipse = e.Location;
+
+                            Point iniTemp = new Point(posInicial.X, posInicial.Y);
+                            Point fimTemp = new Point(posFinalElipse.X, posInicial.Y);
+                            Reta reta = new Reta(iniTemp, fimTemp);
+                            elipseTemp.SetEixoA(reta);
+
+                            //ativar para pegar o segundo ponto da segunda reta
+                            add2Elipse = true;
+                        }
+                        else
+                        {
+                            // PEGAR O TERCEIRO PONTO -> final da segunda reta 
+                            posFinal = e.Location;
+
+                            Point iniTemp = new Point(posInicial.X, posInicial.Y);
+                            Point fimTemp = new Point(posInicial.X, posFinal.Y);
+                            Reta reta = new Reta(iniTemp, fimTemp);
+                            elipseTemp.SetEixoB(reta);
+                            elipses.Add(elipseTemp);
+                            elipseTemp = new Elipse();
+
+                            //inicializar como não tendo mais nenhum ponto
+                            posInicial.X = -1;
+                            posInicial.Y = -1;
+                            addElipse = false;
+                            add2Elipse = false;
+                        }
+                    }
+                }
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                // fechar o polígono
+                if (addPoligono && posInicial.X != -1)
+                {
+                    posFinal = poligonoTemp.GetAresta(0).GetIni(); //pega o último ponto do polígono
+                    poligonoTemp.AddAresta(new Reta(posInicial, posFinal)); //fecha o polígono
+                    poligonos.Add(poligonoTemp); //adiciona o polígono à lista de polígonos
+
+                    //adicionar o polígono à minha lista de polígonos de exibição no formulário principal
+                    ListViewItem item = new ListViewItem("Obj. " + poligonos.Count + " | " + "Qtde. Arestas: " + poligonoTemp.CountArestas());
+                    item.Tag = poligonoTemp;
+                    listViewPoligono.Items.Add(item);
+
+                    //inicializa o polígono temporário
+                    poligonoTemp = new Poligono(); 
+
+                    //inicializar ponto inicial
+                    posInicial.X = -1;
+                    posInicial.Y = -1;
+
+                    DesativarAddPoligono();
+                }
+            }
+
+            Filtros.ImagemBranca(imageBitmap);
+            Desenhar();
+        }
+
+        // ================================================ ListView do Polígono =====================================================================
+        /*
+         * Funções para a plotagem de elementos na tela
+         *   Recuperar um objeto real a partir do item selecionado na listView -> polígonos
+        **/
+        private void listViewPoligono_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewPoligono.SelectedItems.Count == 0)
+                return;
+
+            ListViewItem item = listViewPoligono.SelectedItems[0];
+
+            // Recupera seu objeto real
+            Poligono p = (Poligono)item.Tag;
+
+            //desenha de uma cor diferente
+            Desenhar();
+            DesenharPoligono(p, Color.Red.R, Color.Red.G, Color.Red.B);
+        }
+
+        // ================================================ DESENHAR ==================================================================================
+        /*
+         * Funções para a plotagem de elementos na tela
+        **/
         private void Desenhar()
         {
             DesenharRetas();
             DesenharPoligonoAtual();
             DesenharPoligonos();
+            DesenharCircunferencias();
+            DesenharElipses();
             pictBoxImg1.Refresh();
         }
 
         private void DesenharRetas()
         {
-            for(int i=0; i<retasIni.Count; i++)
+            for (int i = 0; i < retas.Count; i++)
             {
-                Filtros.Bresenham(imageBitmap, retasIni[i].X, retasIni[i].Y, retasFim[i].X, retasFim[i].Y, 0, 0, 0); //pinta de preto
+                Filtros.Bresenham(imageBitmap, retas[i].GetIniX(), retas[i].GetIniY(), retas[i].GetFimX(), retas[i].GetFimY(), 0, 0, 0); //pinta de preto
             }
         }
 
@@ -208,112 +450,22 @@ namespace ProcessamentoImagens
             pictBoxImg1.Refresh();
         }
 
-        private void pictBoxImg1_MouseClick(object sender, MouseEventArgs e)
+        private void DesenharCircunferencias()
         {
-            if (e.Button == MouseButtons.Left)
+            for (int i = 0; i < circunferencias.Count; i++)
             {
-                // retas ou adição de um polígono
-                if (!reta || addPoligono)
-                {
-                    if (btnEquacaoReta.Checked || btnDDA.Checked || btnPontoMedioRetas.Checked)
-                    {
-                        reta = true;
-                        posInicial = e.Location;
-                        posAnt = e.Location;
-                        Console.WriteLine($"Início: {posInicial.X}, {posInicial.Y}");
-                    }
-                    else if (addPoligono)
-                    {
-                        if(posInicial.X == -1) //primeiro ponto do polígono
-                        {
-                            posInicial = e.Location;
-                            posAnt = e.Location;
-                        }
-                        else
-                        {
-                            posFinal = e.Location;
-                            poligonoTemp.AddAresta(new Reta(posInicial, posFinal));
-                            Filtros.Bresenham(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y, 0, 0, 0); //desenhar a reta do polígono
-                            pictBoxImg1.Refresh();
-                            posInicial = posFinal;
-                        }
-                    }
-                }
-                else
-                {
-                    posFinal = e.Location;
-                    if (btnEquacaoReta.Checked)
-                    {
-                        Filtros.EquacaoReta(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y);
-                    }
-                    else if (btnDDA.Checked)
-                    {
-                        Filtros.DDA(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y);
-                    }
-                    else if (btnPontoMedioRetas.Checked)
-                    {
-                        Filtros.Bresenham(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y, 0, 0, 0);
-                    }
-
-                    //add na minha lista de pontos
-                    Point iniTemp = new Point(posInicial.X, posInicial.Y);
-                    Point fimTemp = new Point(posFinal.X, posFinal.Y);
-                    retasIni.Add(iniTemp);
-                    retasFim.Add(fimTemp);
-
-                    //inicializar como não tendo mais nenhum ponto
-                    posInicial.X = -1;
-                    posInicial.Y = -1;
-                    reta = false;
-                    pictBoxImg1.Refresh();
-                }
-            }
-            else if(e.Button == MouseButtons.Right)
-            {
-                // fechar o polígono
-                if(addPoligono && posInicial.X != -1)
-                {
-                    posFinal = poligonoTemp.GetAresta(0).GetIni(); //pega o último ponto do polígono
-                    poligonoTemp.AddAresta(new Reta(posInicial, posFinal)); //fecha o polígono
-                    poligonos.Add(poligonoTemp); //adiciona o polígono à lista de polígonos
-
-                    //adicionar o polígono à minha lista de polígonos de exibição no formulário principal
-                    ListViewItem item = new ListViewItem("Obj. " + poligonos.Count + " | " + "Qtde. Arestas: " + poligonoTemp.CountArestas());
-                    item.Tag = poligonoTemp;
-                    listViewPoligono.Items.Add(item);
-
-                    Console.WriteLine(poligonoTemp.ToString()); //exibição do polígono em formato de string
-                    poligonoTemp = new Poligono(); //inicializa um novo polígono para o próximo
-
-                    //desenhar a reta de fechamento do polígono
-                    Filtros.Bresenham(imageBitmap, posInicial.X, posInicial.Y, posFinal.X, posFinal.Y, 0, 0, 0);
-
-                    Filtros.Bresenham(imageBitmap, posInicial.X, posInicial.Y, e.X, e.Y, 255, 255, 255);
-                    pictBoxImg1.Refresh();
-                    //inicializar como não tendo mais nenhum ponto
-                    posInicial.X = -1;
-                    posInicial.Y = -1;
-
-                    DesativarAddPoligono();
-                }
+                Circunferencia c = circunferencias[i];
+                Filtros.CircunferenciaPontoMedio(imageBitmap, c.GetCentroX(), c.GetCentroY(), c.GetFimRaioX(), c.GetFimRaioY(), 0, 0, 0); //pintar de preto
             }
         }
 
-        //recuperar um objeto real a partir do item selecionado na listView -> polígonos
-        private void listViewPoligono_SelectedIndexChanged(object sender, EventArgs e)
+        private void DesenharElipses()
         {
-            if (listViewPoligono.SelectedItems.Count == 0)
-                return;
-
-            ListViewItem item = listViewPoligono.SelectedItems[0];
-
-            // Recupera seu objeto real
-            Poligono p = (Poligono)item.Tag;
-
-            Console.WriteLine(poligonoTemp.ToString());
-
-            //desenha de uma cor diferente
-            DesenharPoligono(p, Color.Red.R, Color.Red.G, Color.Red.B);
+            for (int i = 0; i < elipses.Count; i++)
+            {
+                Elipse e = elipses[i];
+                Filtros.ElipsePontoMedio(imageBitmap, e.GetOrigemX(), e.GetOrigemY(), e.GetFimEixoAX(), e.GetFimEixoAY(), e.GetFimEixoBX(), e.GetFimEixoBY(), 0, 0, 0); //pintar de preto
+            }
         }
     }
 }

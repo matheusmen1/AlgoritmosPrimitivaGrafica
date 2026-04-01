@@ -10,129 +10,17 @@ namespace ProcessamentoImagens
 {
     class Filtros
     {
-        //com acesso direto a memória
-        public static void convert_to_grayDMA(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
-        {
-            int width = imageBitmapSrc.Width;
-            int height = imageBitmapSrc.Height;
-            int pixelSize = 3;
-            Int32 gs;
-
-            //lock dados bitmap origem
-            BitmapData bitmapDataSrc = imageBitmapSrc.LockBits(new Rectangle(0, 0, width, height),
-                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-            //lock dados bitmap destino
-            BitmapData bitmapDataDst = imageBitmapDest.LockBits(new Rectangle(0, 0, width, height),
-                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-
-            int padding = bitmapDataSrc.Stride - (width * pixelSize);
-
-            unsafe
-            {
-                byte* src = (byte*)bitmapDataSrc.Scan0.ToPointer();
-                byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
-
-                int r, g, b;
-                for (int y = 0; y < height; y++)
-                {
-                    for (int x = 0; x < width; x++)
-                    {
-                        b = *(src++); //está armazenado dessa forma: b g r 
-                        g = *(src++);
-                        r = *(src++);
-                        gs = (Int32)(r * 0.2990 + g * 0.5870 + b * 0.1140);
-                        *(dst++) = (byte)gs;
-                        *(dst++) = (byte)gs;
-                        *(dst++) = (byte)gs;
-                    }
-                    src += padding;
-                    dst += padding;
-                }
-            }
-            //unlock imagem origem
-            imageBitmapSrc.UnlockBits(bitmapDataSrc);
-            //unlock imagem destino
-            imageBitmapDest.UnlockBits(bitmapDataDst);
-        }
-
-
-
-
-        //------------------------------------------------------------------------
-        //--------- FILTROS -------------------------------------------
-        //------------------------------------------------------------------------
-        unsafe private static void PintaPixel(byte* src, int stride, int width, int height, int x, int y, int valor)
-        {
-            if(x >= 0 && x < width && y >= 0 && y < height) //limitar no tamanho da imagem
-            {
-                byte* pixel;
-                pixel = src + y * stride + x * 3;
-                *(pixel++) = (byte)valor;
-                *(pixel++) = (byte)valor;
-                *(pixel++) = (byte)valor;
-            }
-           
-        }
-        unsafe private static void  PontosCircunferencia(byte* src, int stride, int width, int height, int x, int y, int xc, int yc, int valor)
-        {
-            PintaPixel(src, stride, width, height, xc + x, yc + y, valor);
-            PintaPixel(src, stride, width, height, xc + y, yc + x, valor);
-            PintaPixel(src, stride, width, height, xc - y, yc + x, valor);
-            PintaPixel(src, stride, width, height, xc - x, yc + y, valor);
-            PintaPixel(src, stride, width, height, xc - x, yc - y, valor);
-            PintaPixel(src, stride, width, height, xc - y, yc - x, valor);
-            PintaPixel(src, stride, width, height, xc + y, yc - x, valor);
-            PintaPixel(src, stride, width, height, xc + x, yc - y, valor);
-
-        }
-
-        public static void circunferenciaPontoMedio(Bitmap imgBitmap, int x1, int y1, int x2, int y2)
-        {
-            int width = imgBitmap.Width;
-            int height = imgBitmap.Height;
-            int pixelSize = 3;
-
-            BitmapData img = imgBitmap.LockBits(new Rectangle(0, 0, width, height),
-                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
-
-            int raio = (int)Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
-           
-            unsafe
-            {
-
-                byte* src = (byte*)img.Scan0.ToPointer();
-
-                int x = 0;
-                int y = raio;
-                int d = 3 - 2 * raio;
-                while(x <= y)
-                {
-                    
-                    PontosCircunferencia(src, img.Stride, width, height, x, y, x1, y1, 0);
-
-                    if (d < 0)
-                    {
-                        d = d + 2 * x + 3;
-                        
-                    }
-                    else
-                    {
-                        d = d + 2 * (x - y) + 5;
-                        y--;
-                    }
-                    x++;
-                }
-            }
-            imgBitmap.UnlockBits(img);
-        }
-
-        public static void circunferenciaEquacao(Bitmap imgBitmap, int x1, int y1, int x2, int y2)
+        //==================================== CIRCUNFERÊNCIA =================================================================================
+        /*
+         * Logo abaixo temos 3 MÉTODOS para a contrução (plotagem na tela) de CIRCUNFERÊNCIAS. -> Equação Real, Equação Trigonométrica e Ponto Médio
+         * Existe também o método auxiliar para pintar os pontos da circunferência nas 8 OCTANTES
+         * **/
+        public static void CircunferenciaEquacao(Bitmap imgBitmap, int x1, int y1, int x2, int y2)
         {
             int width = imgBitmap.Width;
             int height = imgBitmap.Height;
 
-            BitmapData img = imgBitmap.LockBits(new Rectangle(0, 0, width, height),
-                ImageLockMode.ReadWrite,PixelFormat.Format24bppRgb);
+            BitmapData img = imgBitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
 
             int raio = (int)Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
 
@@ -147,7 +35,7 @@ namespace ProcessamentoImagens
                 {
                     int y = (int)Math.Sqrt(raio * raio - x * x); // Raiz(R^2−𝑥^2)
 
-                    PontosCircunferencia(src, img.Stride, width, height, x, y, x1, y1, 0);
+                    PontosCircunferencia(src, img.Stride, width, height, x, y, x1, y1, 0,0,0);
 
                     x++;
                 }
@@ -155,11 +43,10 @@ namespace ProcessamentoImagens
 
             imgBitmap.UnlockBits(img);
         }
-
-        //utiliza as equações paramétricas da circunferência, onde o ângulo α varia de 0 a 2π
-        //permitindo calcular as coordenadas x e y a partir das funções cosseno e seno
-        public static void circunferenciaTrigonometria(Bitmap imgBitmap, int x1, int y1, int x2, int y2)
+        public static void CircunferenciaTrigonometria(Bitmap imgBitmap, int x1, int y1, int x2, int y2)
         {
+            //utiliza as equações paramétricas da circunferência, onde o ângulo α varia de 0 a 2π
+            //permitindo calcular as coordenadas x e y a partir das funções cosseno e seno
             int width = imgBitmap.Width;
             int height = imgBitmap.Height;
 
@@ -185,125 +72,168 @@ namespace ProcessamentoImagens
                     // y = R * sen(α) e x = R * cos(α)
                     //transformam o ângulo α em coordenadas, cos e sen vão de - 1 a 1
                     int x = (int)(raio * Math.Cos(t));
-                    int y = (int)(raio * Math.Sin(t)); 
+                    int y = (int)(raio * Math.Sin(t));
 
                     // Soma em x1 e y1 para deslocar a circunferência para o centro correto
-                    PintaPixel(src, img.Stride, width, height, x1 + x, y1 + y, 0);
+                    PintaPixel(src, img.Stride, width, height, x1 + x, y1 + y, 0, 0, 0);
                 }
             }
 
             imgBitmap.UnlockBits(img);
         }
-
-
-
-
-        //================================= ELIPSE =================================
-
-
-        unsafe private static void PontosElipse(byte* src, int stride, int width, int height, int x, int y, int xc, int yc, int valor)
-        {
-            PintaPixel(src, stride, width, height, xc + x, yc + y, valor);
-            PintaPixel(src, stride, width, height, xc - x, yc + y, valor);
-            PintaPixel(src, stride, width, height, xc - x, yc - y, valor);
-            PintaPixel(src, stride, width, height, xc + x, yc - y, valor);
-        }
-        unsafe private static void MidpointElipse(byte* src, int stride, int width, int height, int a, int b, int xc, int yc, int color)
-        {
-            int x, y;
-            double d1, d2;
-            /* Valores iniciais */
-            x = 0;
-            y = b;
-            d1 = b*b - a*a*b + (a*a) / 4.0;
-            PontosElipse(src, stride, width, height, x, y, xc, yc, color); /* Simetria de ordem 4 */
-            while (a * a * (y - 0.5) > b * b * (x + 1))
-            {
-                /* Regi~ao 1 */
-                if (d1 < 0) { 
-                    d1 = d1 + b * b * (2 * x + 3);
-                    x++;
-                }else
-                {
-                    d1 = d1 + b * b * (2 * x + 3) + a * a * (-2 * y + 2);
-                    x++;
-                    y--;
-                }
-                PontosElipse(src, stride, width, height, x, y, xc, yc, color);
-            }
-            d2 = b* b *(x + 0.5) * (x + 0.5) + a * a * (y - 1) * (y - 1) - a * a * b * b;
-            while(y > 0)
-            {
-                /* Regi~ao 2 */
-                if (d2< 0)
-                {
-                    d2 = d2 + b* b *(2 * x + 2) + a * a * (-2 * y + 3);
-                    x++;
-                    y--;
-                }
-                else
-                {
-                    d2 = d2 + a* a *(-2 * y + 3);
-                    y--;
-                }/*end if*/
-                PontosElipse(src, stride, width, height, x, y, xc, yc, color);
-            }
-        }
-
-        public static void elipsePontoMedio(Bitmap imgBitmap, int x1, int y1, int x2, int y2)
+        public static void CircunferenciaPontoMedio(Bitmap imgBitmap, int x1, int y1, int x2, int y2, int R, int G, int B)
         {
             int width = imgBitmap.Width;
             int height = imgBitmap.Height;
 
-            BitmapData img = imgBitmap.LockBits(new Rectangle(0, 0, width, height),
-                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData img = imgBitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
 
-            //calcula os semi-eixos a e b (raios)
-            int a = Math.Abs(x2-x1);
-            int b = Math.Abs(y2 - y1);
-
-            // Calcular o centro da elipse (xc, yc)
-            int xc = x1; // Aqui você pode definir o centro de acordo com sua necessidade
-            int yc = y1;
+            int raio = (int)Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
 
             unsafe
             {
                 byte* src = (byte*)img.Scan0.ToPointer();
 
-                MidpointElipse(src, img.Stride, width, height, a, b, xc, yc, 0);
+                int x = 0;
+                int y = raio;
+                int d = 3 - 2 * raio;
+                while (x <= y)
+                {
+
+                    PontosCircunferencia(src, img.Stride, width, height, x, y, x1, y1, R, G, B);
+
+                    if (d < 0)
+                    {
+                        d = d + 2 * x + 3;
+
+                    }
+                    else
+                    {
+                        d = d + 2 * (x - y) + 5;
+                        y--;
+                    }
+                    x++;
+                }
+            }
+            imgBitmap.UnlockBits(img);
+        }
+        unsafe private static void PontosCircunferencia(byte* src, int stride, int width, int height, int x, int y, int xc, int yc, int R, int G, int B)
+        {
+            PintaPixel(src, stride, width, height, xc + x, yc + y, R, G, B);
+            PintaPixel(src, stride, width, height, xc + y, yc + x, R, G, B);
+            PintaPixel(src, stride, width, height, xc - y, yc + x, R, G, B);
+            PintaPixel(src, stride, width, height, xc - x, yc + y, R, G, B);
+            PintaPixel(src, stride, width, height, xc - x, yc - y, R, G, B);
+            PintaPixel(src, stride, width, height, xc - y, yc - x, R, G, B);
+            PintaPixel(src, stride, width, height, xc + y, yc - x, R, G, B);
+            PintaPixel(src, stride, width, height, xc + x, yc - y, R, G, B);
+        }
+
+        //==================================== ELIPSE ======================================================================================
+        /*
+         * Logo abaixo temos o MÉTODO para a contrução (plotagem na tela) de ELIPSES
+         * **/
+        public static void ElipsePontoMedio(Bitmap imgBitmap, int x1, int y1, int x2, int y2, int x3, int y3, int R, int G, int B)
+        {
+            int width = imgBitmap.Width;
+            int height = imgBitmap.Height;
+
+            BitmapData img = imgBitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+            int xc = x1;
+            int yc = y1;
+
+            // raio horizontal (semi-eixo maior ou menor)
+            int a = Math.Abs(x2 - xc);
+
+            // raio vertical
+            int b = Math.Abs(y3 - yc);
+
+            unsafe
+            {
+                byte* src = (byte*)img.Scan0.ToPointer();
+
+                MidpointElipse(src, img.Stride, width, height, a, b, xc, yc, R, G, B);
             }
 
             imgBitmap.UnlockBits(img);
         }
+        unsafe private static void PontosElipse(byte* src, int stride, int width, int height, int x, int y, int xc, int yc, int R, int G, int B)
+        {
+            PintaPixel(src, stride, width, height, xc + x, yc + y, R, G, B);
+            PintaPixel(src, stride, width, height, xc - x, yc + y, R, G, B);
+            PintaPixel(src, stride, width, height, xc - x, yc - y, R, G, B);
+            PintaPixel(src, stride, width, height, xc + x, yc - y, R, G, B);
+        }
+        unsafe private static void MidpointElipse(byte* src, int stride, int width, int height, int a, int b, int xc, int yc, int R, int G, int B)
+        {
+            int x, y;
+            double d1, d2;
 
-        //===================================================================================================================
+            /* Valores iniciais */
+            x = 0;
+            y = b;
+            d1 = b * b - a * a * b + (a * a) / 4.0;
 
+            PontosElipse(src, stride, width, height, x, y, xc, yc, R, G, B); /* Simetria de ordem 4 */
+            while (a * a * (y - 0.5) > b * b * (x + 1))
+            {
+                /* Região 1 */
+                if (d1 < 0)
+                {
+                    d1 = d1 + b * b * (2 * x + 3);
+                    x++;
+                }
+                else
+                {
+                    d1 = d1 + b * b * (2 * x + 3) + a * a * (-2 * y + 2);
+                    x++;
+                    y--;
+                }
+                PontosElipse(src, stride, width, height, x, y, xc, yc, R, G, B);
+            }
+            d2 = b * b * (x + 0.5) * (x + 0.5) + a * a * (y - 1) * (y - 1) - a * a * b * b;
+            while (y > 0)
+            {
+                /* Região 2 */
+                if (d2 < 0)
+                {
+                    d2 = d2 + b * b * (2 * x + 2) + a * a * (-2 * y + 3);
+                    x++;
+                    y--;
+                }
+                else
+                {
+                    d2 = d2 + a * a * (-2 * y + 3);
+                    y--;
+                }/*end if*/
+                PontosElipse(src, stride, width, height, x, y, xc, yc, R, G, B);
+            }
+        }
 
-
-
-
-
+        //==================================== RETAS =======================================================================================
+        /*
+         * Codificação de 3 MÉTODOS DIFERENTES para a construção (plotagem na tela) de RETAS.
+         * **/
         public static void EquacaoReta(Bitmap imgBitmap, int x1, int y1, int x2, int y2)
         {
             int width = imgBitmap.Width;
             int height = imgBitmap.Height;
             int pixelSize = 3;
 
-            BitmapData img = imgBitmap.LockBits(new Rectangle(0, 0, width, height),
-                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData img = imgBitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
 
-            
             //desenhar linha da direita -> esquerda
             if (x1 > x2)
             {
                 int temp;
 
-                temp = x1; 
-                x1 = x2; 
+                temp = x1;
+                x1 = x2;
                 x2 = temp;
 
-                temp = y1; 
-                y1 = y2; 
+                temp = y1;
+                y1 = y2;
                 y2 = temp;
             }
 
@@ -367,20 +297,15 @@ namespace ProcessamentoImagens
                     }
                 }
             }
-
             imgBitmap.UnlockBits(img);
         }
-
         public static void DDA(Bitmap imgBitmap, int X1, int Y1, int X2, int Y2)
         {
-
-            
             int width = imgBitmap.Width;
             int height = imgBitmap.Height;
             int pixelSize = 3;
 
-            BitmapData img = imgBitmap.LockBits(new Rectangle(0, 0, width, height),
-                ImageLockMode.ReadWrite,PixelFormat.Format24bppRgb);
+            BitmapData img = imgBitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
 
             int Length, I;
             float X, Y, Xinc, Yinc;
@@ -480,7 +405,7 @@ namespace ProcessamentoImagens
             int y = y1;
 
             BitmapData img = imgBitmap.LockBits(new Rectangle(0, 0, width, height),
-                ImageLockMode.ReadWrite,PixelFormat.Format24bppRgb);
+                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
 
             unsafe
             {
@@ -529,14 +454,17 @@ namespace ProcessamentoImagens
             imgBitmap.UnlockBits(img);
         }
 
-        public static void imagemBranca(Bitmap imgBitmap)
+        //=================================== FILTROS ================================================================================
+        /*
+         * Codificação de um MÉTODO para deixar a IMAGEM INTEIRAMENTE BRANCA.
+         * **/
+        public static void ImagemBranca(Bitmap imgBitmap)
         {
             int width = imgBitmap.Width;
             int height = imgBitmap.Height;
             int pixelSize = 3;
 
-            BitmapData img = imgBitmap.LockBits(new Rectangle(0, 0, width, height),
-                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData img = imgBitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
 
             unsafe
             {
@@ -556,6 +484,68 @@ namespace ProcessamentoImagens
                 }
             }
             imgBitmap.UnlockBits(img);
+        }
+
+        /*
+         * Codificação de um MÉTODO para deixar a IMAGEM INTEIRAMENTE na ESCALA DE CINZA.
+         * **/
+        public static void Convert_to_grayDMA(Bitmap imageBitmapSrc, Bitmap imageBitmapDest)
+        {
+            int width = imageBitmapSrc.Width;
+            int height = imageBitmapSrc.Height;
+            int pixelSize = 3;
+            Int32 gs;
+
+            //lock dados bitmap origem
+            BitmapData bitmapDataSrc = imageBitmapSrc.LockBits(new Rectangle(0, 0, width, height),
+                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            //lock dados bitmap destino
+            BitmapData bitmapDataDst = imageBitmapDest.LockBits(new Rectangle(0, 0, width, height),
+                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+            int padding = bitmapDataSrc.Stride - (width * pixelSize);
+
+            unsafe
+            {
+                byte* src = (byte*)bitmapDataSrc.Scan0.ToPointer();
+                byte* dst = (byte*)bitmapDataDst.Scan0.ToPointer();
+
+                int r, g, b;
+                for (int y = 0; y < height; y++)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        b = *(src++); //está armazenado dessa forma: b g r 
+                        g = *(src++);
+                        r = *(src++);
+                        gs = (Int32)(r * 0.2990 + g * 0.5870 + b * 0.1140);
+                        *(dst++) = (byte)gs;
+                        *(dst++) = (byte)gs;
+                        *(dst++) = (byte)gs;
+                    }
+                    src += padding;
+                    dst += padding;
+                }
+            }
+            //unlock imagem origem
+            imageBitmapSrc.UnlockBits(bitmapDataSrc);
+            //unlock imagem destino
+            imageBitmapDest.UnlockBits(bitmapDataDst);
+        }
+
+        /*
+         * Codificação de um MÉTODO para PINTAR UM PIXEL na ESCALA DE CINZA.
+         * **/
+        unsafe private static void PintaPixel(byte* src, int stride, int width, int height, int x, int y, int R, int G, int B)
+        {
+            if (x >= 0 && x < width && y >= 0 && y < height) //limitar no tamanho da imagem
+            {
+                byte* pixel;
+                pixel = src + y * stride + x * 3;
+                *(pixel++) = (byte)B;
+                *(pixel++) = (byte)G;
+                *(pixel++) = (byte)R;
+            }
         }
     }
 }
