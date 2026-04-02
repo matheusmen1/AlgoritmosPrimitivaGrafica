@@ -42,11 +42,19 @@ namespace ProcessamentoImagens
 
             pictBoxImg1.SizeMode = PictureBoxSizeMode.Normal;
             pictBoxImg1.Image = imageBitmap;
-            
+
             //definição do listView dos polígonos
             listViewPoligono.View = View.Details;
             listViewPoligono.HeaderStyle = ColumnHeaderStyle.None; // esconde o cabeçalho
             listViewPoligono.Columns.Add("", listViewPoligono.ClientSize.Width); // coluna ocupa tudo
+
+            //definição do listView dos vértices do polígono selecionado
+            listViewVertices.View = View.Details;
+            listViewVertices.HeaderStyle = ColumnHeaderStyle.None; // esconde o cabeçalho
+            listViewVertices.Columns.Add("", listViewPoligono.ClientSize.Width); // coluna ocupa tudo
+
+            //deixar desativado as transformações 2D
+            DesativarBotoesTransformacoes2D();
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -85,8 +93,14 @@ namespace ProcessamentoImagens
             //inicializar a elipse temporária
             elipseTemp = new Elipse();
 
-            //inicializar o listView
+            //inicializar os listView's
             listViewPoligono.Items.Clear();
+            listViewVertices.Items.Clear();
+
+            //esconder componentes
+            lbVertices.Visible = false;
+            btnExcluirPoligono.Visible = false;
+            listViewVertices.Visible = false;
         }
 
         private void ControlarBotoes(bool flag)
@@ -120,6 +134,50 @@ namespace ProcessamentoImagens
             }
         }
 
+        private void AtivarBotoesTransformacoes2D()
+        {
+            // btnAplicarEscala.Enabled = true;
+            // btnAplicarCisalhamento.Enabled = true;
+            // btnAplicarReflexao.Enabled = true;
+            // btnAplicarRotacao.Enabled = true;
+            // btnAplicarTranslacao.Enabled = true;
+            // btnAplicarTudo2d.Enabled = true;
+
+            // numUpDownEscalaX.Enabled = true;
+            // numUpDownEscalaY.Enabled = true;
+            // numUpDownTranslacaoX.Enabled = true;
+            // numUpDownTranslacaoY.Enabled = true;
+            // numUpDownGrauRotacao.Enabled = true;
+            // numUpDownXCisalhamento.Enabled = true;
+            // numUpDownYCisalhamento.Enabled = true;
+            // checkBoxXReflexao.Enabled = true;
+            // checkBoxYReflexao.Enabled = true;
+
+            flowLayoutPanel5.Enabled = true;
+        }
+
+        private void DesativarBotoesTransformacoes2D()
+        {
+            // btnAplicarEscala.Enabled = false;
+            // btnAplicarCisalhamento.Enabled = false;
+            // btnAplicarReflexao.Enabled = false;
+            // btnAplicarRotacao.Enabled = false;
+            // btnAplicarTranslacao.Enabled = false;
+            // btnAplicarTudo2d.Enabled = false;
+
+            // numUpDownEscalaX.Enabled = false;
+            // numUpDownEscalaY.Enabled = false;
+            // numUpDownTranslacaoX.Enabled = false;
+            // numUpDownTranslacaoY.Enabled = false;
+            // numUpDownGrauRotacao.Enabled = false;
+            // numUpDownXCisalhamento.Enabled = false;
+            // numUpDownYCisalhamento.Enabled = false;
+            // checkBoxXReflexao.Enabled = false;
+            // checkBoxYReflexao.Enabled = false;
+
+            flowLayoutPanel5.Enabled = false;
+        }
+
         private void btnAddPoligono_Click(object sender, EventArgs e)
         {
             addPoligono = !addPoligono;
@@ -151,7 +209,7 @@ namespace ProcessamentoImagens
         private void pictBoxImg1_MouseMove(object sender, MouseEventArgs e)
         {
             bool flag = false;
-            if(posInicial.X > -1)
+            if (posInicial.X > -1)
             {
                 if (addPoligono || addReta)
                 {
@@ -213,7 +271,7 @@ namespace ProcessamentoImagens
                     Filtros.ElipsePontoMedio(imageBitmap, posInicial.X, posInicial.Y, posFinalElipse.X, posFinalElipse.Y, posTempFinal.X, posTempFinal.Y, 180, 180, 180); //Circulo temporário
                     Filtros.Bresenham(imageBitmap, posInicial.X, posInicial.Y, posTempFinal.X, posTempFinal.Y, 180, 180, 180); //aresta temporária
                 }
-                if(flag)
+                if (flag)
                     Desenhar();
             }
         }
@@ -366,7 +424,7 @@ namespace ProcessamentoImagens
                     listViewPoligono.Items.Add(item);
 
                     //inicializa o polígono temporário
-                    poligonoTemp = new Poligono(); 
+                    poligonoTemp = new Poligono();
 
                     //inicializar ponto inicial
                     posInicial.X = -1;
@@ -380,24 +438,81 @@ namespace ProcessamentoImagens
             Desenhar();
         }
 
-        // ================================================ ListView do Polígono =====================================================================
+        // ================================================ ListViews =====================================================================
         /*
          * Funções para a plotagem de elementos na tela
-         *   Recuperar um objeto real a partir do item selecionado na listView -> polígonos
+         *   Recuperar um objeto real a partir do item selecionado na listView -> polígonos e vértices
         **/
         private void listViewPoligono_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewPoligono.SelectedItems.Count == 0)
+            {
+                btnExcluirPoligono.Visible = false;
+                lbVertices.Visible = false;
+                listViewVertices.Visible = false;
+                DesativarBotoesTransformacoes2D();
+                Desenhar();
                 return;
+            }
 
             ListViewItem item = listViewPoligono.SelectedItems[0];
 
             // Recupera seu objeto real
             Poligono p = (Poligono)item.Tag;
 
+            //aparece o botões: exclusão e transformações
+            btnExcluirPoligono.Visible = true;
+            AtivarBotoesTransformacoes2D();
+
+            //limpa o listView dos vértices
+            listViewVertices.Items.Clear();
+
+            //aparece os vértices no listView
+            List<Point> vertices = p.GetVerticesModificados();
+            for(int i=0; i<vertices.Count; i++)
+            {
+                Point v = vertices[i];
+                ListViewItem itemVertice = new ListViewItem("(" + v.X + "," + v.Y + ")");
+                itemVertice.Tag = v;
+                listViewVertices.Items.Add(itemVertice);
+            }
+            
+            //aparecer o listView de vertices
+            listViewVertices.Visible = true;
+            lbVertices.Visible = true;
+            lbVertices.Text = item.Text.ToString().Substring(0,6);
+
             //desenha de uma cor diferente
+            Filtros.ImagemBranca(imageBitmap);
             Desenhar();
-            DesenharPoligono(p, Color.Red.R, Color.Red.G, Color.Red.B);
+            DesenharPoligonoModificado(p, Color.Red.R, Color.Red.G, Color.Red.B);
+        }
+
+        private void listViewVertices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //recupera o polígono selecionado
+            ListViewItem itemPoligono = listViewPoligono.SelectedItems[0];
+            Poligono poligono = (Poligono)itemPoligono.Tag;
+
+            if (listViewVertices.SelectedItems.Count == 0)
+            {
+                Filtros.ImagemBranca(imageBitmap);
+                Desenhar();
+                DesenharPoligonoModificado(poligono, Color.Red.R, Color.Red.G, Color.Red.B);
+                return;
+            }
+
+            ListViewItem item = listViewVertices.SelectedItems[0];
+
+            // Recupera seu objeto real
+            Point p = (Point)item.Tag;
+
+            //pinta o vértice em questão selecionado
+            Filtros.ImagemBranca(imageBitmap);
+            Desenhar();
+            DesenharPoligonoModificado(poligono, Color.Red.R, Color.Red.G, Color.Red.B);
+            Filtros.PintaVertice(imageBitmap, p.X, p.Y, Color.Black.R, Color.Black.G, Color.Black.B);
+            pictBoxImg1.Refresh();
         }
 
         // ================================================ DESENHAR ==================================================================================
@@ -413,7 +528,6 @@ namespace ProcessamentoImagens
             DesenharElipses();
             pictBoxImg1.Refresh();
         }
-
         private void DesenharRetas()
         {
             for (int i = 0; i < retas.Count; i++)
@@ -421,7 +535,6 @@ namespace ProcessamentoImagens
                 Filtros.Bresenham(imageBitmap, retas[i].GetIniX(), retas[i].GetIniY(), retas[i].GetFimX(), retas[i].GetFimY(), 0, 0, 0); //pinta de preto
             }
         }
-
         private void DesenharPoligonoAtual()
         {
             for (int i = 0; i < poligonoTemp.CountArestas(); i++)
@@ -430,16 +543,14 @@ namespace ProcessamentoImagens
                 Filtros.Bresenham(imageBitmap, r.GetIniX(), r.GetIniY(), r.GetFimX(), r.GetFimY(), 180, 180, 180); //aresta temporária
             }
         }
-
         private void DesenharPoligonos()
         {
             for (int i = 0; i < poligonos.Count; i++)
             {
                 Poligono p = poligonos[i];
-                DesenharPoligono(p, 0, 0, 0);
+                DesenharPoligonoModificado(p, 0, 0, 0); //teste
             }
         }
-
         private void DesenharPoligono(Poligono p, int R, int G, int B)
         {
             for (int j = 0; j < p.CountArestas(); j++)
@@ -449,7 +560,16 @@ namespace ProcessamentoImagens
             }
             pictBoxImg1.Refresh();
         }
-
+        private void DesenharPoligonoModificado(Poligono p, int R, int G, int B)
+        {
+            List<Reta> arestasModificadas = p.GetArestasTransformadas();
+            for (int i = 0; i < arestasModificadas.Count; i++)
+            {
+                Reta r = arestasModificadas[i];
+                Filtros.Bresenham(imageBitmap, r.GetIniX(), r.GetIniY(), r.GetFimX(), r.GetFimY(), R, G, B);
+            }
+            pictBoxImg1.Refresh();
+        }
         private void DesenharCircunferencias()
         {
             for (int i = 0; i < circunferencias.Count; i++)
@@ -458,7 +578,6 @@ namespace ProcessamentoImagens
                 Filtros.CircunferenciaPontoMedio(imageBitmap, c.GetCentroX(), c.GetCentroY(), c.GetFimRaioX(), c.GetFimRaioY(), 0, 0, 0); //pintar de preto
             }
         }
-
         private void DesenharElipses()
         {
             for (int i = 0; i < elipses.Count; i++)
@@ -468,45 +587,159 @@ namespace ProcessamentoImagens
             }
         }
 
-
-        // ================ AÇÔES TRANSFORMAÇÕES GEOMÉTRICAS =====================
+        // =========================== AÇÔES TRANSFORMAÇÕES GEOMÉTRICAS ================================================
         private void btnAplicarEscala_Click(object sender, EventArgs e)
         {
             //numUpDownEscalaX;
             //numUpDownEscalaY;
+            if(listViewPoligono.SelectedItems.Count != 0)
+            {
+                //recupera o polígono selecionado
+                ListViewItem itemPoligono = listViewPoligono.SelectedItems[0];
+                Poligono poligono = (Poligono)itemPoligono.Tag;
+                AplicarEscala(poligono);
+                Desenhar();
+            }
         }
 
         private void btnAplicarTranslacao_Click(object sender, EventArgs e)
         {
             //numUpDownTranslacaoX;
             //numUpDownTranslacaoY;
-
+            if(listViewPoligono.SelectedItems.Count != 0)
+            {
+                ListViewItem itemPoligono = listViewPoligono.SelectedItems[0];
+                Poligono poligono = (Poligono)itemPoligono.Tag;
+                AplicarTranslacao(poligono);
+                Desenhar();
+            }
         }
 
         private void btnAplicarRotacao_Click(object sender, EventArgs e)
         {
             //numUpDownGrauRotacao;
+            if(listViewPoligono.SelectedItems.Count != 0)
+            {
+                ListViewItem itemPoligono = listViewPoligono.SelectedItems[0];
+                Poligono poligono = (Poligono)itemPoligono.Tag;
+                AplicarRotacao(poligono);
+                Desenhar();
+            }
         }
 
         private void btnAplicarCisalhamento_Click(object sender, EventArgs e)
         {
-           // numUpDownXCisalhamento;
-           // numUpDownYCisalhamento;
+            // numUpDownXCisalhamento;
+            // numUpDownYCisalhamento;
+            if(listViewPoligono.SelectedItems.Count != 0)
+            {
+                ListViewItem itemPoligono = listViewPoligono.SelectedItems[0];
+                Poligono poligono = (Poligono)itemPoligono.Tag;
+                AplicarCisalhamento(poligono);
+                Desenhar();
+            }
         }
 
         private void btnAplicarReflexao_Click(object sender, EventArgs e)
         {
-            if (checkBoxXReflexao.Checked && checkBoxYReflexao.Checked)
+            if(listViewPoligono.SelectedItems.Count != 0)
             {
-
-            }else if(checkBoxXReflexao.Checked)
-            {
-                //reflexão em relação ao eixo X
-
-            } else if (checkBoxYReflexao.Checked)
-            {
-                //reflexão em relação ao eixo Y
+                ListViewItem itemPoligono = listViewPoligono.SelectedItems[0];
+                Poligono poligono = (Poligono)itemPoligono.Tag;
+                AplicarReflexao(poligono);
+                Desenhar();
             }
-
         }
+
+        private void btnAplicarTudo2d_Click(object sender, EventArgs e)
+        {
+            if(listViewPoligono.SelectedItems.Count != 0)
+            {
+                ListViewItem itemPoligono = listViewPoligono.SelectedItems[0];
+                Poligono p = (Poligono)itemPoligono.Tag;
+
+                AplicarEscala(p);
+                AplicarTranslacao(p);
+                AplicarRotacao(p);
+                AplicarCisalhamento(p);
+                AplicarReflexao(p);
+                Desenhar();
+            }
+        }
+        
+        private void AplicarEscala(Poligono p)
+        {
+            double escalaX = (double)numUpDownEscalaX.Value;
+            double escalaY = (double)numUpDownEscalaY.Value;
+            p.MultiplicaMatrizEscala(escalaX, escalaY);
+        }
+
+        private void AplicarTranslacao(Poligono p)
+        {
+            double tx = (double)numUpDownTranslacaoX.Value;
+            double ty = (double)numUpDownTranslacaoY.Value;
+            p.MultiplicaMatrizTranslacao(tx, ty);
+        }
+
+        private void AplicarRotacao(Poligono p)
+        {
+            int angulo = (int)numUpDownGrauRotacao.Value;
+            p.MultiplicaMatrizRotacao(angulo);
+        }
+
+        private void AplicarCisalhamento(Poligono p)
+        {
+            double shx = (double)numUpDownXCisalhamento.Value;
+            double shy = (double)numUpDownYCisalhamento.Value;
+            p.MultiplicaMatrizCisalhamento(shx, shy);
+        }
+
+        private void AplicarReflexao(Poligono p)
+        {
+            bool eixoX = checkBoxXReflexao.Checked;
+            bool eixoY = checkBoxYReflexao.Checked;
+            if(eixoX || eixoY)
+                p.MultiplicaMatrizReflexao(eixoX, eixoY);
+        }
+
+        private void btnExcluirPoligono_Click(object sender, EventArgs e)
+        {
+            if (listViewPoligono.SelectedItems.Count != 0)
+            {
+                DialogResult res = MessageBox.Show(
+                    "Deseja excluir o polígono " + listViewPoligono.SelectedItems[0].Text.ToString().Substring(0,6) + "?",
+                    "Confirmação",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (res == DialogResult.Yes)
+                {
+                    ListViewItem item = listViewPoligono.SelectedItems[0];
+                    Poligono p = (Poligono)item.Tag;
+
+                    //remove da sua lista real
+                    poligonos.Remove(p);
+
+                    //remove da interface
+                    listViewPoligono.Items.Remove(item);
+
+                    // limpa vértices
+                    listViewVertices.Items.Clear();
+                    listViewVertices.Visible = false;
+                    lbVertices.Visible = false;
+
+                    // esconde botão
+                    btnExcluirPoligono.Visible = false;
+
+                    // limpa seleção
+                    listViewPoligono.SelectedItems.Clear();
+
+                    // redesenha
+                    Filtros.ImagemBranca(imageBitmap);
+                    Desenhar();
+                }
+            }
+        }
+    }
 }

@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|c:\\users\\gabriel\\documents\\faculdade\\termo-7\\cg_computacaografica\\trabalho1bi\\algoritmosprimitivagrafica-19712111\\algoritmosprimitivagrafica\\processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\processamentoimagens\\frmprincipal.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\frmprincipal.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|c:\\users\\gabriel\\documents\\faculdade\\termo-7\\cg_computacaografica\\trabalho1bi\\algoritmosprimitivagrafica-19712111\\algoritmosprimitivagrafica\\processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\processamentoimagens\\classes\\poligono.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,8 +70,7 @@
               "RelativeToolTip": "ProcessamentoImagens\\classes\\Poligono.cs",
               "ViewState": "AgIAAGIAAAAAAAAAAAAgwHgAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T02:55:51.618Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-02T02:55:51.618Z"
             },
             {
               "$type": "Document",
@@ -87,7 +86,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "frmPrincipal.cs [Design]",
               "DocumentMoniker": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\frmPrincipal.cs",
               "RelativeDocumentMoniker": "ProcessamentoImagens\\frmPrincipal.cs",
@@ -99,20 +98,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "frmPrincipal.cs",
               "DocumentMoniker": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\frmPrincipal.cs",
               "RelativeDocumentMoniker": "ProcessamentoImagens\\frmPrincipal.cs",
               "ToolTip": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\frmPrincipal.cs",
               "RelativeToolTip": "ProcessamentoImagens\\frmPrincipal.cs",
-              "ViewState": "AgIAAMQBAAAAAAAAAIA5wNQBAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAMACAAAAAAAAAAAowMkCAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-24T13:08:04.969Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "frmPrincipal.designer.cs",
               "DocumentMoniker": "C:\\Users\\gabriel\\Documents\\faculdade\\termo-7\\CG_ComputacaoGrafica\\trabalho1Bi\\AlgoritmosPrimitivaGrafica-19712111\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\frmPrincipal.designer.cs",
               "RelativeDocumentMoniker": "ProcessamentoImagens\\frmPrincipal.designer.cs",
@@ -120,8 +119,7 @@
               "RelativeToolTip": "ProcessamentoImagens\\frmPrincipal.designer.cs",
               "ViewState": "AgIAALwCAAAAAAAAAAAMwM8CAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-31T20:44:36.201Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-31T20:44:36.201Z"
             },
             {
               "$type": "Document",

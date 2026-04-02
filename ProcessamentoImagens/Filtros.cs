@@ -35,7 +35,7 @@ namespace ProcessamentoImagens
                 {
                     int y = (int)Math.Sqrt(raio * raio - x * x); // Raiz(R^2−𝑥^2)
 
-                    PontosCircunferencia(src, img.Stride, width, height, x, y, x1, y1, 0,0,0);
+                    PontosCircunferencia(src, img.Stride, width, height, x, y, x1, y1, 0, 0, 0);
 
                     x++;
                 }
@@ -546,6 +546,56 @@ namespace ProcessamentoImagens
                 *(pixel++) = (byte)G;
                 *(pixel++) = (byte)R;
             }
+        }
+
+        unsafe public static void PintaVertice(Bitmap bmp, int x, int y, int R, int G, int B)
+        {
+            int width = bmp.Width;
+            int height = bmp.Height;
+            int pixelSize = 3;
+
+            BitmapData data = bmp.LockBits(new Rectangle(0, 0, width, height),
+                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+            int stride = data.Stride;
+
+            byte* src = (byte*)data.Scan0.ToPointer();
+
+            int raio = 3;
+            int bordaR = 0, bordaG = 0, bordaB = 0;
+
+            for (int dy = -raio; dy <= raio; dy++)
+            {
+                for (int dx = -raio; dx <= raio; dx++)
+                {
+                    int px = x + dx;
+                    int py = y + dy;
+
+                    if (px >= 0 && px < width && py >= 0 && py < height)
+                    {
+                        int dist2 = dx * dx + dy * dy;
+
+                        byte* pixel = src + py * stride + px * pixelSize;
+
+                        // borda
+                        if (dist2 <= raio * raio && dist2 >= (raio - 1) * (raio - 1))
+                        {
+                            pixel[0] = (byte)bordaB;
+                            pixel[1] = (byte)bordaG;
+                            pixel[2] = (byte)bordaR;
+                        }
+                        // centro
+                        else if (dist2 < (raio - 1) * (raio - 1))
+                        {
+                            pixel[0] = (byte)B;
+                            pixel[1] = (byte)G;
+                            pixel[2] = (byte)R;
+                        }
+                    }
+                }
+            }
+
+            bmp.UnlockBits(data);
         }
     }
 }
