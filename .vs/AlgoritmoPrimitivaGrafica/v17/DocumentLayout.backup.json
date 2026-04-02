@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\mathe\\Downloads\\AlgoritmosPrimitivaGrafica\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|c:\\users\\mathe\\downloads\\algoritmosprimitivagrafica\\processamentoimagens\\filtros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\filtros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|C:\\Users\\mathe\\Downloads\\AlgoritmosPrimitivaGrafica\\processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|C:\\Users\\mathe\\Downloads\\AlgoritmosPrimitivaGrafica\\processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|c:\\users\\mathe\\downloads\\algoritmosprimitivagrafica\\processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|c:\\users\\mathe\\downloads\\algoritmosprimitivagrafica\\processamentoimagens\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|C:\\Users\\mathe\\Downloads\\AlgoritmosPrimitivaGrafica\\processamentoimagens\\filtros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\filtros.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|C:\\Users\\mathe\\Downloads\\AlgoritmosPrimitivaGrafica\\processamentoimagens\\classes\\poligono.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62FFB5F4-39D7-491B-B53A-8266E2053D1B}|ProcessamentoImagens\\AlgoritmosPrimitivaGrafica.csproj|solutionrelative:processamentoimagens\\classes\\poligono.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,33 +58,58 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\mathe\\Downloads\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\Program.cs",
+              "RelativeDocumentMoniker": "ProcessamentoImagens\\Program.cs",
+              "ToolTip": "C:\\Users\\mathe\\Downloads\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\Program.cs",
+              "RelativeToolTip": "ProcessamentoImagens\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T14:42:47.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Poligono.cs",
+              "DocumentMoniker": "C:\\Users\\mathe\\Downloads\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\classes\\Poligono.cs",
+              "RelativeDocumentMoniker": "ProcessamentoImagens\\classes\\Poligono.cs",
+              "ToolTip": "C:\\Users\\mathe\\Downloads\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\classes\\Poligono.cs",
+              "RelativeToolTip": "ProcessamentoImagens\\classes\\Poligono.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAswOwAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T14:35:21.474Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "frmPrincipal.cs",
               "DocumentMoniker": "C:\\Users\\mathe\\Downloads\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\frmPrincipal.cs",
               "RelativeDocumentMoniker": "ProcessamentoImagens\\frmPrincipal.cs",
               "ToolTip": "C:\\Users\\mathe\\Downloads\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\frmPrincipal.cs",
               "RelativeToolTip": "ProcessamentoImagens\\frmPrincipal.cs",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAYwJ0AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAALIBAAAAAAAAAAAEwNgBAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-21T17:19:36.558Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Filtros.cs",
               "DocumentMoniker": "C:\\Users\\mathe\\Downloads\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\Filtros.cs",
               "RelativeDocumentMoniker": "ProcessamentoImagens\\Filtros.cs",
               "ToolTip": "C:\\Users\\mathe\\Downloads\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\Filtros.cs",
               "RelativeToolTip": "ProcessamentoImagens\\Filtros.cs",
-              "ViewState": "AgIAALIAAAAAAAAAAAAQwMQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAE8BAAAAAAAAAAAgwMQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-21T17:14:09.749Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "frmPrincipal.cs [Design]",
               "DocumentMoniker": "C:\\Users\\mathe\\Downloads\\AlgoritmosPrimitivaGrafica\\ProcessamentoImagens\\frmPrincipal.cs",
               "RelativeDocumentMoniker": "ProcessamentoImagens\\frmPrincipal.cs",

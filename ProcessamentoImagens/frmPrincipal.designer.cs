@@ -53,59 +53,61 @@
             this.lbVertices = new System.Windows.Forms.Label();
             this.listViewVertices = new System.Windows.Forms.ListView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.btnAplicarTranslacao = new System.Windows.Forms.Button();
+            this.numUpDownTranslacaoY = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numUpDownTranslacaoX = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.btnAplicarEscala = new System.Windows.Forms.Button();
+            this.numUpDownEscalaY = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.numUpDownEscalaX = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
+            this.btnAplicarRotacao = new System.Windows.Forms.Button();
+            this.numUpDownGrauRotacao = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.btnAplicarCisalhamento = new System.Windows.Forms.Button();
+            this.numUpDownYCisalhamento = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
+            this.numUpDownXCisalhamento = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.checkBoxYReflexao = new System.Windows.Forms.CheckBox();
+            this.checkBoxXReflexao = new System.Windows.Forms.CheckBox();
+            this.btnAplicarReflexao = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictBoxImg1)).BeginInit();
             this.flowLayoutPanel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownTranslacaoY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownTranslacaoX)).BeginInit();
             this.flowLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownEscalaY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownEscalaX)).BeginInit();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownGrauRotacao)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownYCisalhamento)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownXCisalhamento)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(12, 580);
+            this.btnLimpar.Location = new System.Drawing.Point(16, 714);
+            this.btnLimpar.Margin = new System.Windows.Forms.Padding(4);
             this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(170, 23);
+            this.btnLimpar.Size = new System.Drawing.Size(227, 28);
             this.btnLimpar.TabIndex = 107;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
@@ -116,10 +118,11 @@
             this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.flowLayoutPanel1.Controls.Add(this.groupBox6);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(16, 15);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(170, 344);
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(227, 423);
             this.flowLayoutPanel1.TabIndex = 108;
             // 
             // groupBox6
@@ -135,9 +138,11 @@
             this.groupBox6.Controls.Add(this.btnDDA);
             this.groupBox6.Controls.Add(this.label2);
             this.groupBox6.Font = new System.Drawing.Font("MS Reference Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(11, 3);
+            this.groupBox6.Location = new System.Drawing.Point(15, 4);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(150, 335);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox6.Size = new System.Drawing.Size(200, 412);
             this.groupBox6.TabIndex = 121;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Primitivas Gráficas";
@@ -146,9 +151,10 @@
             // 
             this.btnPontoMedioElipse.AutoSize = true;
             this.btnPontoMedioElipse.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPontoMedioElipse.Location = new System.Drawing.Point(6, 267);
+            this.btnPontoMedioElipse.Location = new System.Drawing.Point(8, 329);
+            this.btnPontoMedioElipse.Margin = new System.Windows.Forms.Padding(4);
             this.btnPontoMedioElipse.Name = "btnPontoMedioElipse";
-            this.btnPontoMedioElipse.Size = new System.Drawing.Size(85, 17);
+            this.btnPontoMedioElipse.Size = new System.Drawing.Size(108, 21);
             this.btnPontoMedioElipse.TabIndex = 1;
             this.btnPontoMedioElipse.TabStop = true;
             this.btnPontoMedioElipse.Text = "Ponto Médio";
@@ -157,9 +163,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 244);
+            this.label6.Location = new System.Drawing.Point(4, 300);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 19);
+            this.label6.Size = new System.Drawing.Size(73, 24);
             this.label6.TabIndex = 116;
             this.label6.Text = "Elipse";
             // 
@@ -167,9 +174,10 @@
             // 
             this.btnPontoMedioCircunferencia.AutoSize = true;
             this.btnPontoMedioCircunferencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPontoMedioCircunferencia.Location = new System.Drawing.Point(6, 218);
+            this.btnPontoMedioCircunferencia.Location = new System.Drawing.Point(8, 268);
+            this.btnPontoMedioCircunferencia.Margin = new System.Windows.Forms.Padding(4);
             this.btnPontoMedioCircunferencia.Name = "btnPontoMedioCircunferencia";
-            this.btnPontoMedioCircunferencia.Size = new System.Drawing.Size(85, 17);
+            this.btnPontoMedioCircunferencia.Size = new System.Drawing.Size(108, 21);
             this.btnPontoMedioCircunferencia.TabIndex = 115;
             this.btnPontoMedioCircunferencia.TabStop = true;
             this.btnPontoMedioCircunferencia.Text = "Ponto Médio";
@@ -179,9 +187,10 @@
             // 
             this.btnTrigonometria.AutoSize = true;
             this.btnTrigonometria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTrigonometria.Location = new System.Drawing.Point(6, 194);
+            this.btnTrigonometria.Location = new System.Drawing.Point(8, 239);
+            this.btnTrigonometria.Margin = new System.Windows.Forms.Padding(4);
             this.btnTrigonometria.Name = "btnTrigonometria";
-            this.btnTrigonometria.Size = new System.Drawing.Size(89, 17);
+            this.btnTrigonometria.Size = new System.Drawing.Size(117, 21);
             this.btnTrigonometria.TabIndex = 114;
             this.btnTrigonometria.TabStop = true;
             this.btnTrigonometria.Text = "Trigonometria";
@@ -190,9 +199,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1, 149);
+            this.label3.Location = new System.Drawing.Point(1, 183);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 19);
+            this.label3.Size = new System.Drawing.Size(161, 24);
             this.label3.TabIndex = 6;
             this.label3.Text = "Circunferência";
             // 
@@ -200,9 +210,10 @@
             // 
             this.btnPontoMedioRetas.AutoSize = true;
             this.btnPontoMedioRetas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPontoMedioRetas.Location = new System.Drawing.Point(5, 125);
+            this.btnPontoMedioRetas.Location = new System.Drawing.Point(7, 154);
+            this.btnPontoMedioRetas.Margin = new System.Windows.Forms.Padding(4);
             this.btnPontoMedioRetas.Name = "btnPontoMedioRetas";
-            this.btnPontoMedioRetas.Size = new System.Drawing.Size(85, 17);
+            this.btnPontoMedioRetas.Size = new System.Drawing.Size(108, 21);
             this.btnPontoMedioRetas.TabIndex = 3;
             this.btnPontoMedioRetas.TabStop = true;
             this.btnPontoMedioRetas.Text = "Ponto Médio";
@@ -212,9 +223,10 @@
             // 
             this.btnEquacaoCircunferencia.AutoSize = true;
             this.btnEquacaoCircunferencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEquacaoCircunferencia.Location = new System.Drawing.Point(6, 171);
+            this.btnEquacaoCircunferencia.Location = new System.Drawing.Point(8, 210);
+            this.btnEquacaoCircunferencia.Margin = new System.Windows.Forms.Padding(4);
             this.btnEquacaoCircunferencia.Name = "btnEquacaoCircunferencia";
-            this.btnEquacaoCircunferencia.Size = new System.Drawing.Size(139, 17);
+            this.btnEquacaoCircunferencia.Size = new System.Drawing.Size(180, 21);
             this.btnEquacaoCircunferencia.TabIndex = 113;
             this.btnEquacaoCircunferencia.TabStop = true;
             this.btnEquacaoCircunferencia.Text = "Equação Circunferência";
@@ -224,9 +236,10 @@
             // 
             this.btnEquacaoReta.AutoSize = true;
             this.btnEquacaoReta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEquacaoReta.Location = new System.Drawing.Point(5, 79);
+            this.btnEquacaoReta.Location = new System.Drawing.Point(7, 97);
+            this.btnEquacaoReta.Margin = new System.Windows.Forms.Padding(4);
             this.btnEquacaoReta.Name = "btnEquacaoReta";
-            this.btnEquacaoReta.Size = new System.Drawing.Size(109, 17);
+            this.btnEquacaoReta.Size = new System.Drawing.Size(139, 21);
             this.btnEquacaoReta.TabIndex = 1;
             this.btnEquacaoReta.TabStop = true;
             this.btnEquacaoReta.Text = "Equação da Reta";
@@ -236,9 +249,10 @@
             // 
             this.btnDDA.AutoSize = true;
             this.btnDDA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDDA.Location = new System.Drawing.Point(5, 102);
+            this.btnDDA.Location = new System.Drawing.Point(7, 126);
+            this.btnDDA.Margin = new System.Windows.Forms.Padding(4);
             this.btnDDA.Name = "btnDDA";
-            this.btnDDA.Size = new System.Drawing.Size(48, 17);
+            this.btnDDA.Size = new System.Drawing.Size(58, 21);
             this.btnDDA.TabIndex = 2;
             this.btnDDA.TabStop = true;
             this.btnDDA.Text = "DDA";
@@ -247,17 +261,19 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 60);
+            this.label2.Location = new System.Drawing.Point(4, 74);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 19);
+            this.label2.Size = new System.Drawing.Size(67, 24);
             this.label2.TabIndex = 5;
             this.label2.Text = "Retas";
             // 
             // pictBoxImg1
             // 
-            this.pictBoxImg1.Location = new System.Drawing.Point(189, 12);
+            this.pictBoxImg1.Location = new System.Drawing.Point(252, 15);
+            this.pictBoxImg1.Margin = new System.Windows.Forms.Padding(4);
             this.pictBoxImg1.Name = "pictBoxImg1";
-            this.pictBoxImg1.Size = new System.Drawing.Size(734, 591);
+            this.pictBoxImg1.Size = new System.Drawing.Size(979, 727);
             this.pictBoxImg1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictBoxImg1.TabIndex = 110;
             this.pictBoxImg1.TabStop = false;
@@ -268,9 +284,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(4, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 20);
+            this.label1.Size = new System.Drawing.Size(107, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Polígonos";
             // 
@@ -284,26 +301,29 @@
             this.flowLayoutPanel3.Controls.Add(this.lbVertices);
             this.flowLayoutPanel3.Controls.Add(this.listViewVertices);
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(4, 4);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(169, 588);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(225, 724);
             this.flowLayoutPanel3.TabIndex = 7;
             // 
             // listViewPoligono
             // 
             this.listViewPoligono.HideSelection = false;
-            this.listViewPoligono.Location = new System.Drawing.Point(3, 23);
+            this.listViewPoligono.Location = new System.Drawing.Point(4, 29);
+            this.listViewPoligono.Margin = new System.Windows.Forms.Padding(4);
             this.listViewPoligono.Name = "listViewPoligono";
-            this.listViewPoligono.Size = new System.Drawing.Size(159, 154);
+            this.listViewPoligono.Size = new System.Drawing.Size(211, 189);
             this.listViewPoligono.TabIndex = 1;
             this.listViewPoligono.UseCompatibleStateImageBehavior = false;
             this.listViewPoligono.SelectedIndexChanged += new System.EventHandler(this.listViewPoligono_SelectedIndexChanged);
             // 
             // btnAddPoligono
             // 
-            this.btnAddPoligono.Location = new System.Drawing.Point(3, 183);
+            this.btnAddPoligono.Location = new System.Drawing.Point(4, 226);
+            this.btnAddPoligono.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddPoligono.Name = "btnAddPoligono";
-            this.btnAddPoligono.Size = new System.Drawing.Size(159, 23);
+            this.btnAddPoligono.Size = new System.Drawing.Size(212, 28);
             this.btnAddPoligono.TabIndex = 2;
             this.btnAddPoligono.Text = "Add Polígono";
             this.btnAddPoligono.UseVisualStyleBackColor = true;
@@ -313,9 +333,10 @@
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Red;
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(3, 212);
+            this.btnCancelar.Location = new System.Drawing.Point(4, 262);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(159, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(212, 28);
             this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -326,9 +347,10 @@
             // 
             this.button1.BackColor = System.Drawing.Color.Red;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(3, 241);
+            this.button1.Location = new System.Drawing.Point(4, 298);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 23);
+            this.button1.Size = new System.Drawing.Size(212, 28);
             this.button1.TabIndex = 6;
             this.button1.Text = "Excluir";
             this.button1.UseVisualStyleBackColor = false;
@@ -338,10 +360,11 @@
             // 
             this.lbVertices.AutoSize = true;
             this.lbVertices.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbVertices.Location = new System.Drawing.Point(3, 267);
+            this.lbVertices.Location = new System.Drawing.Point(4, 330);
+            this.lbVertices.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbVertices.Name = "lbVertices";
-            this.lbVertices.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.lbVertices.Size = new System.Drawing.Size(67, 30);
+            this.lbVertices.Padding = new System.Windows.Forms.Padding(0, 12, 0, 0);
+            this.lbVertices.Size = new System.Drawing.Size(83, 37);
             this.lbVertices.TabIndex = 7;
             this.lbVertices.Text = "Vertices";
             this.lbVertices.Visible = false;
@@ -349,101 +372,111 @@
             // listViewVertices
             // 
             this.listViewVertices.HideSelection = false;
-            this.listViewVertices.Location = new System.Drawing.Point(3, 300);
+            this.listViewVertices.Location = new System.Drawing.Point(4, 371);
+            this.listViewVertices.Margin = new System.Windows.Forms.Padding(4);
             this.listViewVertices.Name = "listViewVertices";
-            this.listViewVertices.Size = new System.Drawing.Size(159, 154);
+            this.listViewVertices.Size = new System.Drawing.Size(211, 189);
             this.listViewVertices.TabIndex = 8;
             this.listViewVertices.UseCompatibleStateImageBehavior = false;
             this.listViewVertices.Visible = false;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.numericUpDown2);
+            this.groupBox1.Controls.Add(this.btnAplicarTranslacao);
+            this.groupBox1.Controls.Add(this.numUpDownTranslacaoY);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.numUpDownTranslacaoX);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 112);
+            this.groupBox1.Location = new System.Drawing.Point(4, 164);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(134, 103);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(179, 127);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Translação (T)";
             // 
-            // button2
+            // btnAplicarTranslacao
             // 
-            this.button2.Location = new System.Drawing.Point(6, 71);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 26);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Aplicar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAplicarTranslacao.Location = new System.Drawing.Point(8, 87);
+            this.btnAplicarTranslacao.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAplicarTranslacao.Name = "btnAplicarTranslacao";
+            this.btnAplicarTranslacao.Size = new System.Drawing.Size(153, 32);
+            this.btnAplicarTranslacao.TabIndex = 5;
+            this.btnAplicarTranslacao.Text = "Aplicar";
+            this.btnAplicarTranslacao.UseVisualStyleBackColor = true;
+            this.btnAplicarTranslacao.Click += new System.EventHandler(this.btnAplicarTranslacao_Click);
             // 
-            // numericUpDown2
+            // numUpDownTranslacaoY
             // 
-            this.numericUpDown2.Increment = new decimal(new int[] {
+            this.numUpDownTranslacaoY.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown2.Location = new System.Drawing.Point(30, 45);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.numUpDownTranslacaoY.Location = new System.Drawing.Point(40, 55);
+            this.numUpDownTranslacaoY.Margin = new System.Windows.Forms.Padding(4);
+            this.numUpDownTranslacaoY.Maximum = new decimal(new int[] {
             591,
             0,
             0,
             0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.numUpDownTranslacaoY.Minimum = new decimal(new int[] {
             591,
             0,
             0,
             -2147483648});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(91, 22);
-            this.numericUpDown2.TabIndex = 4;
+            this.numUpDownTranslacaoY.Name = "numUpDownTranslacaoY";
+            this.numUpDownTranslacaoY.Size = new System.Drawing.Size(121, 26);
+            this.numUpDownTranslacaoY.TabIndex = 4;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(9, 45);
+            this.label13.Location = new System.Drawing.Point(12, 55);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(15, 16);
+            this.label13.Size = new System.Drawing.Size(19, 19);
             this.label13.TabIndex = 3;
             this.label13.Text = "Y";
             // 
-            // numericUpDown1
+            // numUpDownTranslacaoX
             // 
-            this.numericUpDown1.Increment = new decimal(new int[] {
+            this.numUpDownTranslacaoX.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(30, 19);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.numUpDownTranslacaoX.Location = new System.Drawing.Point(40, 23);
+            this.numUpDownTranslacaoX.Margin = new System.Windows.Forms.Padding(4);
+            this.numUpDownTranslacaoX.Maximum = new decimal(new int[] {
             734,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.numUpDownTranslacaoX.Minimum = new decimal(new int[] {
             734,
             0,
             0,
             -2147483648});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(91, 22);
-            this.numericUpDown1.TabIndex = 2;
+            this.numUpDownTranslacaoX.Name = "numUpDownTranslacaoX";
+            this.numUpDownTranslacaoX.Size = new System.Drawing.Size(121, 26);
+            this.numUpDownTranslacaoX.TabIndex = 2;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 19);
+            this.label10.Location = new System.Drawing.Point(12, 23);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(16, 16);
+            this.label10.Size = new System.Drawing.Size(20, 19);
             this.label10.TabIndex = 1;
             this.label10.Text = "X";
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
@@ -451,283 +484,327 @@
             // 
             this.flowLayoutPanel4.Controls.Add(this.flowLayoutPanel3);
             this.flowLayoutPanel4.Controls.Add(this.flowLayoutPanel5);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(929, 12);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(1239, 15);
+            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(351, 591);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(468, 727);
             this.flowLayoutPanel4.TabIndex = 12;
             // 
             // flowLayoutPanel5
             // 
+            this.flowLayoutPanel5.Controls.Add(this.label11);
             this.flowLayoutPanel5.Controls.Add(this.groupBox3);
             this.flowLayoutPanel5.Controls.Add(this.groupBox1);
             this.flowLayoutPanel5.Controls.Add(this.groupBox4);
             this.flowLayoutPanel5.Controls.Add(this.groupBox2);
             this.flowLayoutPanel5.Controls.Add(this.groupBox5);
             this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(178, 3);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(237, 4);
+            this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(170, 588);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(227, 724);
             this.flowLayoutPanel5.TabIndex = 8;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button3);
-            this.groupBox3.Controls.Add(this.numericUpDown3);
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.btnAplicarEscala);
+            this.groupBox3.Controls.Add(this.numUpDownEscalaY);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.numericUpDown4);
+            this.groupBox3.Controls.Add(this.numUpDownEscalaX);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(3, 3);
+            this.groupBox3.Location = new System.Drawing.Point(4, 29);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(134, 103);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(179, 127);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Escala (S)";
             // 
-            // button3
+            // btnAplicarEscala
             // 
-            this.button3.Location = new System.Drawing.Point(6, 71);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(115, 26);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Aplicar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAplicarEscala.Location = new System.Drawing.Point(8, 87);
+            this.btnAplicarEscala.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAplicarEscala.Name = "btnAplicarEscala";
+            this.btnAplicarEscala.Size = new System.Drawing.Size(153, 32);
+            this.btnAplicarEscala.TabIndex = 5;
+            this.btnAplicarEscala.Text = "Aplicar";
+            this.btnAplicarEscala.UseVisualStyleBackColor = true;
+            this.btnAplicarEscala.Click += new System.EventHandler(this.btnAplicarEscala_Click);
             // 
-            // numericUpDown3
+            // numUpDownEscalaY
             // 
-            this.numericUpDown3.DecimalPlaces = 2;
-            this.numericUpDown3.Increment = new decimal(new int[] {
+            this.numUpDownEscalaY.DecimalPlaces = 2;
+            this.numUpDownEscalaY.Increment = new decimal(new int[] {
             5,
             0,
             0,
             65536});
-            this.numericUpDown3.Location = new System.Drawing.Point(30, 45);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.numUpDownEscalaY.Location = new System.Drawing.Point(40, 55);
+            this.numUpDownEscalaY.Margin = new System.Windows.Forms.Padding(4);
+            this.numUpDownEscalaY.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown3.Minimum = new decimal(new int[] {
+            this.numUpDownEscalaY.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(91, 22);
-            this.numericUpDown3.TabIndex = 4;
+            this.numUpDownEscalaY.Name = "numUpDownEscalaY";
+            this.numUpDownEscalaY.Size = new System.Drawing.Size(121, 26);
+            this.numUpDownEscalaY.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 45);
+            this.label4.Location = new System.Drawing.Point(12, 55);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(15, 16);
+            this.label4.Size = new System.Drawing.Size(19, 19);
             this.label4.TabIndex = 3;
             this.label4.Text = "Y";
             // 
-            // numericUpDown4
+            // numUpDownEscalaX
             // 
-            this.numericUpDown4.DecimalPlaces = 2;
-            this.numericUpDown4.Increment = new decimal(new int[] {
+            this.numUpDownEscalaX.DecimalPlaces = 2;
+            this.numUpDownEscalaX.Increment = new decimal(new int[] {
             5,
             0,
             0,
             65536});
-            this.numericUpDown4.Location = new System.Drawing.Point(30, 19);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.numUpDownEscalaX.Location = new System.Drawing.Point(40, 23);
+            this.numUpDownEscalaX.Margin = new System.Windows.Forms.Padding(4);
+            this.numUpDownEscalaX.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown4.Minimum = new decimal(new int[] {
+            this.numUpDownEscalaX.Minimum = new decimal(new int[] {
             10,
             0,
             0,
             -2147483648});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(91, 22);
-            this.numericUpDown4.TabIndex = 2;
+            this.numUpDownEscalaX.Name = "numUpDownEscalaX";
+            this.numUpDownEscalaX.Size = new System.Drawing.Size(121, 26);
+            this.numUpDownEscalaX.TabIndex = 2;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 19);
+            this.label5.Location = new System.Drawing.Point(12, 23);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(16, 16);
+            this.label5.Size = new System.Drawing.Size(20, 19);
             this.label5.TabIndex = 1;
             this.label5.Text = "X";
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button4);
-            this.groupBox4.Controls.Add(this.numericUpDown6);
+            this.groupBox4.Controls.Add(this.btnAplicarRotacao);
+            this.groupBox4.Controls.Add(this.numUpDownGrauRotacao);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(3, 221);
+            this.groupBox4.Location = new System.Drawing.Point(4, 299);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(134, 73);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(179, 90);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Rotação (R)";
             // 
-            // button4
+            // btnAplicarRotacao
             // 
-            this.button4.Location = new System.Drawing.Point(6, 44);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(115, 26);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Aplicar";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnAplicarRotacao.Location = new System.Drawing.Point(8, 54);
+            this.btnAplicarRotacao.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAplicarRotacao.Name = "btnAplicarRotacao";
+            this.btnAplicarRotacao.Size = new System.Drawing.Size(153, 32);
+            this.btnAplicarRotacao.TabIndex = 5;
+            this.btnAplicarRotacao.Text = "Aplicar";
+            this.btnAplicarRotacao.UseVisualStyleBackColor = true;
+            this.btnAplicarRotacao.Click += new System.EventHandler(this.btnAplicarRotacao_Click);
             // 
-            // numericUpDown6
+            // numUpDownGrauRotacao
             // 
-            this.numericUpDown6.Increment = new decimal(new int[] {
+            this.numUpDownGrauRotacao.Increment = new decimal(new int[] {
             5,
             0,
             0,
             0});
-            this.numericUpDown6.Location = new System.Drawing.Point(6, 18);
-            this.numericUpDown6.Maximum = new decimal(new int[] {
+            this.numUpDownGrauRotacao.Location = new System.Drawing.Point(8, 22);
+            this.numUpDownGrauRotacao.Margin = new System.Windows.Forms.Padding(4);
+            this.numUpDownGrauRotacao.Maximum = new decimal(new int[] {
             360,
             0,
             0,
             0});
-            this.numericUpDown6.Minimum = new decimal(new int[] {
+            this.numUpDownGrauRotacao.Minimum = new decimal(new int[] {
             360,
             0,
             0,
             -2147483648});
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(94, 22);
-            this.numericUpDown6.TabIndex = 2;
+            this.numUpDownGrauRotacao.Name = "numUpDownGrauRotacao";
+            this.numUpDownGrauRotacao.Size = new System.Drawing.Size(125, 26);
+            this.numUpDownGrauRotacao.TabIndex = 2;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(106, 20);
+            this.label7.Location = new System.Drawing.Point(141, 25);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(15, 16);
+            this.label7.Size = new System.Drawing.Size(18, 19);
             this.label7.TabIndex = 1;
             this.label7.Text = "°";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.numericUpDown7);
+            this.groupBox2.Controls.Add(this.btnAplicarCisalhamento);
+            this.groupBox2.Controls.Add(this.numUpDownYCisalhamento);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.numericUpDown8);
+            this.groupBox2.Controls.Add(this.numUpDownXCisalhamento);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(3, 300);
+            this.groupBox2.Location = new System.Drawing.Point(4, 397);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(134, 103);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(179, 127);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cisalhamento";
             // 
-            // button5
+            // btnAplicarCisalhamento
             // 
-            this.button5.Location = new System.Drawing.Point(6, 71);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(115, 26);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Aplicar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnAplicarCisalhamento.Location = new System.Drawing.Point(8, 87);
+            this.btnAplicarCisalhamento.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAplicarCisalhamento.Name = "btnAplicarCisalhamento";
+            this.btnAplicarCisalhamento.Size = new System.Drawing.Size(153, 32);
+            this.btnAplicarCisalhamento.TabIndex = 5;
+            this.btnAplicarCisalhamento.Text = "Aplicar";
+            this.btnAplicarCisalhamento.UseVisualStyleBackColor = true;
+            this.btnAplicarCisalhamento.Click += new System.EventHandler(this.btnAplicarCisalhamento_Click);
             // 
-            // numericUpDown7
+            // numUpDownYCisalhamento
             // 
-            this.numericUpDown7.Location = new System.Drawing.Point(30, 45);
-            this.numericUpDown7.Minimum = new decimal(new int[] {
+            this.numUpDownYCisalhamento.Location = new System.Drawing.Point(40, 55);
+            this.numUpDownYCisalhamento.Margin = new System.Windows.Forms.Padding(4);
+            this.numUpDownYCisalhamento.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             -2147483648});
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(91, 22);
-            this.numericUpDown7.TabIndex = 4;
+            this.numUpDownYCisalhamento.Name = "numUpDownYCisalhamento";
+            this.numUpDownYCisalhamento.Size = new System.Drawing.Size(121, 26);
+            this.numUpDownYCisalhamento.TabIndex = 4;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 45);
+            this.label8.Location = new System.Drawing.Point(12, 55);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 16);
+            this.label8.Size = new System.Drawing.Size(19, 19);
             this.label8.TabIndex = 3;
             this.label8.Text = "Y";
             // 
-            // numericUpDown8
+            // numUpDownXCisalhamento
             // 
-            this.numericUpDown8.Location = new System.Drawing.Point(30, 19);
-            this.numericUpDown8.Minimum = new decimal(new int[] {
+            this.numUpDownXCisalhamento.Location = new System.Drawing.Point(40, 23);
+            this.numUpDownXCisalhamento.Margin = new System.Windows.Forms.Padding(4);
+            this.numUpDownXCisalhamento.Minimum = new decimal(new int[] {
             100,
             0,
             0,
             -2147483648});
-            this.numericUpDown8.Name = "numericUpDown8";
-            this.numericUpDown8.Size = new System.Drawing.Size(91, 22);
-            this.numericUpDown8.TabIndex = 2;
+            this.numUpDownXCisalhamento.Name = "numUpDownXCisalhamento";
+            this.numUpDownXCisalhamento.Size = new System.Drawing.Size(121, 26);
+            this.numUpDownXCisalhamento.TabIndex = 2;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 19);
+            this.label9.Location = new System.Drawing.Point(12, 23);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(16, 16);
+            this.label9.Size = new System.Drawing.Size(20, 19);
             this.label9.TabIndex = 1;
             this.label9.Text = "X";
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.checkBox2);
-            this.groupBox5.Controls.Add(this.checkBox1);
-            this.groupBox5.Controls.Add(this.button6);
+            this.groupBox5.Controls.Add(this.checkBoxYReflexao);
+            this.groupBox5.Controls.Add(this.checkBoxXReflexao);
+            this.groupBox5.Controls.Add(this.btnAplicarReflexao);
             this.groupBox5.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(3, 409);
+            this.groupBox5.Location = new System.Drawing.Point(4, 532);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(134, 106);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Size = new System.Drawing.Size(179, 130);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Reflexão";
             // 
-            // checkBox2
+            // checkBoxYReflexao
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(6, 47);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.checkBox2.Size = new System.Drawing.Size(69, 20);
-            this.checkBox2.TabIndex = 7;
-            this.checkBox2.Text = "Eixo Y";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBoxYReflexao.AutoSize = true;
+            this.checkBoxYReflexao.Location = new System.Drawing.Point(8, 58);
+            this.checkBoxYReflexao.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxYReflexao.Name = "checkBoxYReflexao";
+            this.checkBoxYReflexao.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.checkBoxYReflexao.Size = new System.Drawing.Size(82, 23);
+            this.checkBoxYReflexao.TabIndex = 7;
+            this.checkBoxYReflexao.Text = "Eixo Y";
+            this.checkBoxYReflexao.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // checkBoxXReflexao
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 21);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(70, 20);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Eixo X";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxXReflexao.AutoSize = true;
+            this.checkBoxXReflexao.Location = new System.Drawing.Point(8, 26);
+            this.checkBoxXReflexao.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBoxXReflexao.Name = "checkBoxXReflexao";
+            this.checkBoxXReflexao.Size = new System.Drawing.Size(83, 23);
+            this.checkBoxXReflexao.TabIndex = 6;
+            this.checkBoxXReflexao.Text = "Eixo X";
+            this.checkBoxXReflexao.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnAplicarReflexao
             // 
-            this.button6.Location = new System.Drawing.Point(6, 73);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(115, 26);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "Aplicar";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnAplicarReflexao.Location = new System.Drawing.Point(8, 90);
+            this.btnAplicarReflexao.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAplicarReflexao.Name = "btnAplicarReflexao";
+            this.btnAplicarReflexao.Size = new System.Drawing.Size(153, 32);
+            this.btnAplicarReflexao.TabIndex = 5;
+            this.btnAplicarReflexao.Text = "Aplicar";
+            this.btnAplicarReflexao.UseVisualStyleBackColor = true;
+            this.btnAplicarReflexao.Click += new System.EventHandler(this.btnAplicarReflexao_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(4, 0);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(175, 25);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Transformações:";
             // 
             // frmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1288, 613);
+            this.ClientSize = new System.Drawing.Size(1717, 754);
             this.Controls.Add(this.flowLayoutPanel4);
             this.Controls.Add(this.pictBoxImg1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnLimpar);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formulário Principal";
@@ -739,21 +816,22 @@
             this.flowLayoutPanel3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownTranslacaoY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownTranslacaoX)).EndInit();
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel5.ResumeLayout(false);
+            this.flowLayoutPanel5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownEscalaY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownEscalaX)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownGrauRotacao)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownYCisalhamento)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownXCisalhamento)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
@@ -780,39 +858,40 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown numUpDownTranslacaoY;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numUpDownTranslacaoX;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAplicarTranslacao;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.Button btnAplicarEscala;
+        private System.Windows.Forms.NumericUpDown numUpDownEscalaY;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown numUpDownEscalaX;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
+        private System.Windows.Forms.Button btnAplicarRotacao;
+        private System.Windows.Forms.NumericUpDown numUpDownGrauRotacao;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.NumericUpDown numericUpDown7;
+        private System.Windows.Forms.Button btnAplicarCisalhamento;
+        private System.Windows.Forms.NumericUpDown numUpDownYCisalhamento;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown numericUpDown8;
+        private System.Windows.Forms.NumericUpDown numUpDownXCisalhamento;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnAplicarReflexao;
         private System.Windows.Forms.Label lbVertices;
         private System.Windows.Forms.ListView listViewVertices;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxYReflexao;
+        private System.Windows.Forms.CheckBox checkBoxXReflexao;
+        private System.Windows.Forms.Label label11;
     }
 }
 

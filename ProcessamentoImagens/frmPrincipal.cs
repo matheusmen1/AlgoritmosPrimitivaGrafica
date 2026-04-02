@@ -467,5 +467,46 @@ namespace ProcessamentoImagens
                 Filtros.ElipsePontoMedio(imageBitmap, e.GetOrigemX(), e.GetOrigemY(), e.GetFimEixoAX(), e.GetFimEixoAY(), e.GetFimEixoBX(), e.GetFimEixoBY(), 0, 0, 0); //pintar de preto
             }
         }
-    }
+
+
+        // ================ AÇÔES TRANSFORMAÇÕES GEOMÉTRICAS =====================
+        private void btnAplicarEscala_Click(object sender, EventArgs e)
+        {
+            //numUpDownEscalaX;
+            //numUpDownEscalaY;
+        }
+
+        private void btnAplicarTranslacao_Click(object sender, EventArgs e)
+        {
+            //numUpDownTranslacaoX;
+            //numUpDownTranslacaoY;
+
+        }
+
+        private void btnAplicarRotacao_Click(object sender, EventArgs e)
+        {
+            //numUpDownGrauRotacao;
+        }
+
+        private void btnAplicarCisalhamento_Click(object sender, EventArgs e)
+        {
+           // numUpDownXCisalhamento;
+           // numUpDownYCisalhamento;
+        }
+
+        private void btnAplicarReflexao_Click(object sender, EventArgs e)
+        {
+            if (checkBoxXReflexao.Checked && checkBoxYReflexao.Checked)
+            {
+
+            }else if(checkBoxXReflexao.Checked)
+            {
+                //reflexão em relação ao eixo X
+
+            } else if (checkBoxYReflexao.Checked)
+            {
+                //reflexão em relação ao eixo Y
+            }
+
+        }
 }
