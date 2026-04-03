@@ -556,7 +556,7 @@ namespace ProcessamentoImagens
             int height = bmp.Height;
             int pixelSize = 3;
 
-            BitmapData data = bmp.LockBits(new Rectangle(0, 0, width, height),ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData data = bmp.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
 
             int stride = data.Stride;
 
@@ -626,7 +626,7 @@ namespace ProcessamentoImagens
 
                 //empilhando os pontos dos vértices
                 List<Point> vertices = poligono.GetVerticesModificados();
-                for(int i=0; i<vertices.Count; i++)
+                for (int i = 0; i < vertices.Count; i++)
                 {
                     totX += vertices[i].X;
                     totY += vertices[i].Y;
@@ -636,18 +636,18 @@ namespace ProcessamentoImagens
                 coordX.Add(totX / vertices.Count);
                 coordY.Add(totY / vertices.Count);
 
-                while(coordX.Count > 0)
+                while (coordX.Count > 0)
                 {
                     //desempilha
-                    atual.X = coordX[coordX.Count-1];
-                    coordX.RemoveAt(coordX.Count-1);
-                    atual.Y = coordY[coordY.Count-1];
-                    coordY.RemoveAt(coordY.Count-1);
-                    
-                    
-                    aux = src + atual.Y*stride + atual.X*pixelSize;
+                    atual.X = coordX[coordX.Count - 1];
+                    coordX.RemoveAt(coordX.Count - 1);
+                    atual.Y = coordY[coordY.Count - 1];
+                    coordY.RemoveAt(coordY.Count - 1);
 
-                    if(aux[0]==255 && aux[1]==255 && aux[2]==255)
+
+                    aux = src + atual.Y * stride + atual.X * pixelSize;
+
+                    if (aux[0] == 255 && aux[1] == 255 && aux[2] == 255)
                     {
                         //PintaPixel(src, stride, width, height, atual.X, atual.Y, Color.Azure.R, Color.Azure.G, Color.Azure.B);
                         // pinta direto
@@ -656,20 +656,20 @@ namespace ProcessamentoImagens
                         aux[2] = Color.Azure.R;
 
                         //DIREITA
-                        coordX.Add(atual.X+1);
+                        coordX.Add(atual.X + 1);
                         coordY.Add(atual.Y);
 
                         //BAIXO
                         coordX.Add(atual.X);
-                        coordY.Add(atual.Y+1);
+                        coordY.Add(atual.Y + 1);
 
                         //ESQUERDA
-                        coordX.Add(atual.X-1);
+                        coordX.Add(atual.X - 1);
                         coordY.Add(atual.Y);
 
                         //CIMA
                         coordX.Add(atual.X);
-                        coordY.Add(atual.Y-1);
+                        coordY.Add(atual.Y - 1);
                     }
                 }
             }
@@ -691,19 +691,28 @@ namespace ProcessamentoImagens
                 byte* src = (byte*)data.Scan0.ToPointer();
 
                 int yMax = poligono.GetYMax();
-                EdgeTable[] et = new EdgeTable[yMax]; //vetor de tamanho yMax, para integrar todas as linhas possíveis
+                EdgeTable[] et = new EdgeTable[yMax + 1]; //vetor de tamanho yMax, para integrar todas as linhas possíveis
                 FormarEdgeTable(et, poligono);
 
                 int yMin = poligono.GetYMin();
                 int y = yMin;
                 EdgeTable aet = new EdgeTable();
-                while (!IsVectorEdgeEmpty(et, yMax) & aet != null)
+                while (!IsVectorEdgeEmpty(et, et.Length) || aet.Count() > 0)
                 {
-                    //adicionar os elementos que possuem yMin == y
-                    if(et[y] != null)
+                    if (y >= 0 && y < et.Length && et[y] != null)
                     {
-                        //adiciono apenas o primeiro elemento, pois ele já está encadeando toda a lista
-                        aet.Add(et[y].GetNoEdgeTableAt(0));
+                        NoEdgeTable atual = et[y].GetNoEdgeTableAt(0);
+
+                        while (atual != null)
+                        {
+                            NoEdgeTable prox = atual.prox;
+
+                            atual.prox = null;
+                            aet.Add(atual);
+
+                            atual = prox;
+                        }
+
                         et[y] = null;
                     }
 
@@ -715,19 +724,19 @@ namespace ProcessamentoImagens
 
                     //desenhar os pixels utilizando os pares de coordenadas da AET
                     int quant = aet.Count();
-                    for(int i=0; i<(quant/2)+1; i++)
+                    for (int i = 0; i < (quant / 2); i++)
                     {
-                        NoEdgeTable par1 = aet.GetNoEdgeTableAt(i*2);
-                        NoEdgeTable par2 = aet.GetNoEdgeTableAt(i*2 + 1);
+                        NoEdgeTable par1 = aet.GetNoEdgeTableAt(i * 2);
+                        NoEdgeTable par2 = aet.GetNoEdgeTableAt(i * 2 + 1);
 
                         //pintar do (xMin par1) até (xMin par2)
                         int limite = (int)Math.Ceiling(par2.xMin);
                         for (int j = (int)Math.Ceiling(par1.xMin); j < limite; j++)
-                            PintaPixel(src, stride, width, height, j, y, Color.Azure.R, Color.Azure.G, Color.Azure.B);
+                            PintaPixel(src, stride, width, height, j, y, Color.Red.R, Color.Red.G, Color.Red.B);
                     }
 
                     //atualizar os xMin utilizando os incrementos
-                    for(int i=0; i<aet.Count(); i++)
+                    for (int i = 0; i < aet.Count(); i++)
                         aet.GetNoEdgeTableAt(i).Incrementar();
 
                     y++;
@@ -740,16 +749,39 @@ namespace ProcessamentoImagens
         public static void FormarEdgeTable(EdgeTable[] et, Poligono p)
         {
             //formar a et, primeira parte do algoritmo para rasterização de polígonos
+            List<Reta> arestas = p.GetArestasTransformadas();
+
+            foreach (Reta a in arestas)
+            {
+                NoEdgeTable novoNo = new NoEdgeTable();
+
+                //pegar o yMax
+                novoNo.yMax = a.GetYMax();
+
+                //pegar o xMin
+                novoNo.xMin = a.GetXMin();
+
+                //calcular o incremento no novoNo
+                novoNo.CalcularIncremento(a);
+
+                //setar na posição de Edge Table, onde: [yMin]
+                int yMin = a.GetYMin();
+                if (et[yMin] == null)
+                {
+                    et[yMin] = new EdgeTable();
+                }
+                et[yMin].Add(novoNo);
+            }
         }
 
         public static bool IsVectorEdgeEmpty(EdgeTable[] et, int tamanho)
         {
             //verificar se o vetor de Edge Table possui algum elemento para ser verificado
             bool possuiElementos = false;
-            for(int i=0; i<tamanho && !possuiElementos; i++)
-                if(et[i] != null)
+            for (int i = 0; i < tamanho && !possuiElementos; i++)
+                if (et[i] != null)
                     possuiElementos = true;
-            return possuiElementos;
+            return !possuiElementos;
         }
     }
 }

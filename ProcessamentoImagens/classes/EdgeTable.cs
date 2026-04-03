@@ -25,26 +25,45 @@ namespace ProcessamentoImagens.classes.EdgeTable
         {
             NoEdgeTable aux = et;
             int i = 0;
-            while (aux != null && i < pos + 1)
-                aux = aux.prox;
 
-            if (aux != null) //achei a posição correta
-                return aux;
-            return null;
+            while (aux != null && i < pos)
+            {
+                aux = aux.prox;
+                i++;
+            }
+
+            return aux;
         }
 
+        // public void Add(NoEdgeTable no)
+        // {
+        //     //se lista nulla, adiciona o único nó
+        //     if (et == null)
+        //     {
+        //         et = no;
+        //     }
+        //     else //insere no final
+        //     {
+        //         NoEdgeTable aux = et;
+        //         while (aux.prox != null)
+        //             aux = aux.prox;
+        //         aux.prox = no;
+        //     }
+        // }
         public void Add(NoEdgeTable no)
         {
-            //se lista nulla, adiciona o único nó
+            no.prox = null; // 🔥 garante que é um nó isolado
+
             if (et == null)
             {
                 et = no;
             }
-            else //se não vazia, insere no final
+            else
             {
                 NoEdgeTable aux = et;
                 while (aux.prox != null)
                     aux = aux.prox;
+
                 aux.prox = no;
             }
         }
@@ -92,12 +111,77 @@ namespace ProcessamentoImagens.classes.EdgeTable
 
         public void Sort()
         {
-            //ordenar a lista
+            NoEdgeTable fim = GetNoEdgeTableAt(Count() - 1);
+            NoEdgeTable i = et, posMenor, j;
+            double menor;
+
+            if (et == null)
+                return;
+
+            while (i != fim)
+            {
+                menor = i.xMin;
+                posMenor = i;//Caixa com xMin menor
+
+                j = i.prox;
+                while (j != null)
+                {
+                    // if (j.xMin < menor)
+                    // {
+                    //     menor = j.xMin;
+                    //     posMenor = j;
+                    // }
+                    
+                    if (j.xMin < menor || (j.xMin == menor && j.inc < posMenor.inc))
+                    {
+                        menor = j.xMin;
+                        posMenor = j;
+                    }
+                    j = j.prox;
+                }
+
+                int auxYMax = posMenor.yMax;
+                double auxXMin = posMenor.xMin;
+                double auxInc = posMenor.inc;
+
+                posMenor.yMax = i.yMax;
+                posMenor.xMin = i.xMin;
+                posMenor.inc = i.inc;
+
+                i.yMax = auxYMax;
+                i.xMin = auxXMin;
+                i.inc = auxInc;
+
+                i = i.prox;
+            }
         }
 
         public void RemoveAllYMax(int y)
         {
             //remover todos os elementos da minha lista que o yMax == y
+            NoEdgeTable aux = et;
+            NoEdgeTable ant = aux;
+            while (aux != null) //realizar uma varredura
+            {
+                if (aux.yMax == y) //remover essa caixa
+                {
+                    if (aux == et)
+                    {
+                        et = aux.prox;
+                    }
+                    else
+                    {
+                        ant.prox = aux.prox;
+
+                    }
+                    aux = aux.prox;
+                }
+                else
+                {
+                    ant = aux;
+                    aux = aux.prox;
+                }
+            }
         }
 
         public void Clear()
@@ -109,11 +193,48 @@ namespace ProcessamentoImagens.classes.EdgeTable
         public void Remove()
         {
             //remove o último elemento da ET
+            if (et != null)
+            {
+                if (et.prox == null)
+                    et = null;
+                else
+                {
+                    NoEdgeTable aux = et;
+                    NoEdgeTable ant = aux;
+                    while (aux.prox != null) //vai chegar no último nó da lista
+                    {
+                        ant = aux;
+                        aux = aux.prox;
+                    }
+                    ant.prox = null;
+                }
+            }
+
         }
 
         public void RemoveAt(int pos)
         {
             //remove o no da et na posição pos
+            if (pos > -1 && pos < Count()) //para garantir que está dentro do range
+            {
+                if (pos == 0) //tira a primeira posição
+                {
+                    et = et.prox;
+                }
+                else
+                {
+                    NoEdgeTable ant = et;
+                    NoEdgeTable aux = et.prox;
+                    int posicao = 1;
+                    while (aux != null && posicao < pos + 1)
+                    {
+                        ant = aux;
+                        aux = aux.prox;
+                        posicao++;
+                    }
+                    ant.prox = aux.prox;
+                }
+            }
         }
     }
 }

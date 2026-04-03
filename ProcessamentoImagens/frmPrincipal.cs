@@ -712,8 +712,9 @@ namespace ProcessamentoImagens
                 Poligono poligono = (Poligono)itemPoligono.Tag;
                 Desenhar();
 
-                Filtros.PreencherPoligonoFloodFill(imageBitmap, poligono);
-                //Filtros.PreencherPoligonoScanlineAET(imageBitmap, poligono);
+                //Filtros.PreencherPoligonoFloodFill(imageBitmap, poligono);
+                Filtros.PreencherPoligonoScanlineAET(imageBitmap, poligono);
+                DesenharPoligonoModificado(poligono, 0,0,0);
                 pictBoxImg1.Refresh();
             }
         }
