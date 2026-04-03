@@ -78,6 +78,30 @@ namespace ProcessamentoImagens.classes
             return retorno;
         }
 
+        public int GetYMax()
+        {
+            List<Point> vertices = GetVerticesModificados();
+            int maior = vertices[0].Y;
+
+            for(int i=1; i<vertices.Count; i++)
+                if(vertices[i].Y > maior)
+                    maior = vertices[i].Y;
+
+            return maior;
+        }
+
+        public int GetYMin()
+        {
+            List<Point> vertices = GetVerticesModificados();
+            int menor = vertices[0].Y;
+
+            for(int i=1; i<vertices.Count; i++)
+                if(vertices[i].Y < menor)
+                    menor = vertices[i].Y;
+
+            return menor;
+        }
+
         public int GetPosAresta(Point p)
         {
             int i=0;

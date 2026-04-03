@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpPrimitivas = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.btnPontoMedioElipse = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
@@ -59,7 +59,7 @@
             this.numUpDownTranslacaoX = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpTransformacoes = new System.Windows.Forms.FlowLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnAplicarEscala = new System.Windows.Forms.Button();
@@ -82,14 +82,15 @@
             this.checkBoxXReflexao = new System.Windows.Forms.CheckBox();
             this.btnAplicarReflexao = new System.Windows.Forms.Button();
             this.btnAplicarTudo2d = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.btnPreencherPoligono = new System.Windows.Forms.Button();
+            this.flpPrimitivas.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictBoxImg1)).BeginInit();
             this.flowLayoutPanel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownTranslacaoY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownTranslacaoX)).BeginInit();
-            this.flowLayoutPanel5.SuspendLayout();
+            this.flpTransformacoes.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownEscalaY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownEscalaX)).BeginInit();
@@ -111,15 +112,15 @@
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
-            // flowLayoutPanel1
+            // flpPrimitivas
             // 
-            this.flowLayoutPanel1.Controls.Add(this.groupBox6);
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(170, 344);
-            this.flowLayoutPanel1.TabIndex = 108;
+            this.flpPrimitivas.Controls.Add(this.groupBox6);
+            this.flpPrimitivas.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpPrimitivas.Location = new System.Drawing.Point(12, 12);
+            this.flpPrimitivas.Name = "flpPrimitivas";
+            this.flpPrimitivas.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.flpPrimitivas.Size = new System.Drawing.Size(170, 344);
+            this.flpPrimitivas.TabIndex = 108;
             // 
             // groupBox6
             // 
@@ -281,6 +282,7 @@
             this.flowLayoutPanel3.Controls.Add(this.btnAddPoligono);
             this.flowLayoutPanel3.Controls.Add(this.btnCancelar);
             this.flowLayoutPanel3.Controls.Add(this.btnExcluirPoligono);
+            this.flowLayoutPanel3.Controls.Add(this.btnPreencherPoligono);
             this.flowLayoutPanel3.Controls.Add(this.lbVertices);
             this.flowLayoutPanel3.Controls.Add(this.listViewVertices);
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -339,7 +341,7 @@
             // 
             this.lbVertices.AutoSize = true;
             this.lbVertices.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbVertices.Location = new System.Drawing.Point(3, 267);
+            this.lbVertices.Location = new System.Drawing.Point(3, 296);
             this.lbVertices.Name = "lbVertices";
             this.lbVertices.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.lbVertices.Size = new System.Drawing.Size(67, 30);
@@ -350,7 +352,7 @@
             // listViewVertices
             // 
             this.listViewVertices.HideSelection = false;
-            this.listViewVertices.Location = new System.Drawing.Point(3, 300);
+            this.listViewVertices.Location = new System.Drawing.Point(3, 329);
             this.listViewVertices.Name = "listViewVertices";
             this.listViewVertices.Size = new System.Drawing.Size(159, 154);
             this.listViewVertices.TabIndex = 8;
@@ -451,20 +453,20 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // flowLayoutPanel5
+            // flpTransformacoes
             // 
-            this.flowLayoutPanel5.Controls.Add(this.label11);
-            this.flowLayoutPanel5.Controls.Add(this.groupBox3);
-            this.flowLayoutPanel5.Controls.Add(this.groupBox1);
-            this.flowLayoutPanel5.Controls.Add(this.groupBox4);
-            this.flowLayoutPanel5.Controls.Add(this.groupBox2);
-            this.flowLayoutPanel5.Controls.Add(this.groupBox5);
-            this.flowLayoutPanel5.Controls.Add(this.btnAplicarTudo2d);
-            this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(1012, 12);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(155, 600);
-            this.flowLayoutPanel5.TabIndex = 8;
+            this.flpTransformacoes.Controls.Add(this.label11);
+            this.flpTransformacoes.Controls.Add(this.groupBox3);
+            this.flpTransformacoes.Controls.Add(this.groupBox1);
+            this.flpTransformacoes.Controls.Add(this.groupBox4);
+            this.flpTransformacoes.Controls.Add(this.groupBox2);
+            this.flpTransformacoes.Controls.Add(this.groupBox5);
+            this.flpTransformacoes.Controls.Add(this.btnAplicarTudo2d);
+            this.flpTransformacoes.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpTransformacoes.Location = new System.Drawing.Point(1012, 12);
+            this.flpTransformacoes.Name = "flpTransformacoes";
+            this.flpTransformacoes.Size = new System.Drawing.Size(155, 600);
+            this.flpTransformacoes.TabIndex = 8;
             // 
             // label11
             // 
@@ -743,20 +745,33 @@
             this.btnAplicarTudo2d.UseVisualStyleBackColor = false;
             this.btnAplicarTudo2d.Click += new System.EventHandler(this.btnAplicarTudo2d_Click);
             // 
+            // btnPreencherPoligono
+            // 
+            this.btnPreencherPoligono.BackColor = System.Drawing.Color.Turquoise;
+            this.btnPreencherPoligono.ForeColor = System.Drawing.Color.Black;
+            this.btnPreencherPoligono.Location = new System.Drawing.Point(3, 270);
+            this.btnPreencherPoligono.Name = "btnPreencherPoligono";
+            this.btnPreencherPoligono.Size = new System.Drawing.Size(159, 23);
+            this.btnPreencherPoligono.TabIndex = 9;
+            this.btnPreencherPoligono.Text = "Preencher";
+            this.btnPreencherPoligono.UseVisualStyleBackColor = false;
+            this.btnPreencherPoligono.Visible = false;
+            this.btnPreencherPoligono.Click += new System.EventHandler(this.btnPreencherPoligono_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1179, 617);
-            this.Controls.Add(this.flowLayoutPanel5);
+            this.Controls.Add(this.flpTransformacoes);
             this.Controls.Add(this.flowLayoutPanel3);
             this.Controls.Add(this.pictBoxImg1);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flpPrimitivas);
             this.Controls.Add(this.btnLimpar);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formulário Principal";
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flpPrimitivas.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictBoxImg1)).EndInit();
@@ -766,8 +781,8 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownTranslacaoY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownTranslacaoX)).EndInit();
-            this.flowLayoutPanel5.ResumeLayout(false);
-            this.flowLayoutPanel5.PerformLayout();
+            this.flpTransformacoes.ResumeLayout(false);
+            this.flpTransformacoes.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownEscalaY)).EndInit();
@@ -788,7 +803,7 @@
         #endregion
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flpPrimitivas;
         private System.Windows.Forms.PictureBox pictBoxImg1;
         private System.Windows.Forms.RadioButton btnEquacaoReta;
         private System.Windows.Forms.RadioButton btnDDA;
@@ -810,7 +825,7 @@
         private System.Windows.Forms.NumericUpDown numUpDownTranslacaoX;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnAplicarTranslacao;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.FlowLayoutPanel flpTransformacoes;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnAplicarEscala;
         private System.Windows.Forms.NumericUpDown numUpDownEscalaY;
@@ -839,6 +854,7 @@
         private System.Windows.Forms.CheckBox checkBoxXReflexao;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnAplicarTudo2d;
+        private System.Windows.Forms.Button btnPreencherPoligono;
     }
 }
 

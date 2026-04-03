@@ -5,6 +5,8 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using ProcessamentoImagens.classes;
+using ProcessamentoImagens.classes.EdgeTable;
 
 namespace ProcessamentoImagens
 {
@@ -554,8 +556,7 @@ namespace ProcessamentoImagens
             int height = bmp.Height;
             int pixelSize = 3;
 
-            BitmapData data = bmp.LockBits(new Rectangle(0, 0, width, height),
-                ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+            BitmapData data = bmp.LockBits(new Rectangle(0, 0, width, height),ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
 
             int stride = data.Stride;
 
@@ -596,6 +597,159 @@ namespace ProcessamentoImagens
             }
 
             bmp.UnlockBits(data);
+        }
+
+        //=================================== ALGORITMOS DE PREENCHIMENTO ================================================================================
+        /*
+         * Codificação de um MÉTODO para preencher toda a área do polígono.
+         * **/
+        public static void PreencherPoligonoFloodFill(Bitmap imageBitmap, Poligono poligono)
+        {
+            int width = imageBitmap.Width;
+            int height = imageBitmap.Height;
+            int pixelSize = 3;
+
+            BitmapData data = imageBitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+            //add no inicio[0] e removo do inicio[0]
+            List<int> coordX = new List<int>();
+            List<int> coordY = new List<int>();
+            Point atual = new Point();
+            int totX = 0, totY = 0;
+
+            int stride = data.Stride;
+
+            unsafe
+            {
+                byte* src = (byte*)data.Scan0.ToPointer();
+                byte* aux;
+
+                //empilhando os pontos dos vértices
+                List<Point> vertices = poligono.GetVerticesModificados();
+                for(int i=0; i<vertices.Count; i++)
+                {
+                    totX += vertices[i].X;
+                    totY += vertices[i].Y;
+                }
+
+                //empilhar a média
+                coordX.Add(totX / vertices.Count);
+                coordY.Add(totY / vertices.Count);
+
+                while(coordX.Count > 0)
+                {
+                    //desempilha
+                    atual.X = coordX[coordX.Count-1];
+                    coordX.RemoveAt(coordX.Count-1);
+                    atual.Y = coordY[coordY.Count-1];
+                    coordY.RemoveAt(coordY.Count-1);
+                    
+                    
+                    aux = src + atual.Y*stride + atual.X*pixelSize;
+
+                    if(aux[0]==255 && aux[1]==255 && aux[2]==255)
+                    {
+                        //PintaPixel(src, stride, width, height, atual.X, atual.Y, Color.Azure.R, Color.Azure.G, Color.Azure.B);
+                        // pinta direto
+                        aux[0] = Color.Azure.B;
+                        aux[1] = Color.Azure.G;
+                        aux[2] = Color.Azure.R;
+
+                        //DIREITA
+                        coordX.Add(atual.X+1);
+                        coordY.Add(atual.Y);
+
+                        //BAIXO
+                        coordX.Add(atual.X);
+                        coordY.Add(atual.Y+1);
+
+                        //ESQUERDA
+                        coordX.Add(atual.X-1);
+                        coordY.Add(atual.Y);
+
+                        //CIMA
+                        coordX.Add(atual.X);
+                        coordY.Add(atual.Y-1);
+                    }
+                }
+            }
+
+            imageBitmap.UnlockBits(data);
+        }
+
+        public static void PreencherPoligonoScanlineAET(Bitmap imageBitmap, Poligono poligono)
+        {
+            int width = imageBitmap.Width;
+            int height = imageBitmap.Height;
+
+            BitmapData data = imageBitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
+
+            int stride = data.Stride;
+
+            unsafe
+            {
+                byte* src = (byte*)data.Scan0.ToPointer();
+
+                int yMax = poligono.GetYMax();
+                EdgeTable[] et = new EdgeTable[yMax]; //vetor de tamanho yMax, para integrar todas as linhas possíveis
+                FormarEdgeTable(et, poligono);
+
+                int yMin = poligono.GetYMin();
+                int y = yMin;
+                EdgeTable aet = new EdgeTable();
+                while (!IsVectorEdgeEmpty(et, yMax) & aet != null)
+                {
+                    //adicionar os elementos que possuem yMin == y
+                    if(et[y] != null)
+                    {
+                        //adiciono apenas o primeiro elemento, pois ele já está encadeando toda a lista
+                        aet.Add(et[y].GetNoEdgeTableAt(0));
+                        et[y] = null;
+                    }
+
+                    //ordenar a lista de available
+                    aet.Sort();
+
+                    //remover os elementos (nós) com yMax == y
+                    aet.RemoveAllYMax(y);
+
+                    //desenhar os pixels utilizando os pares de coordenadas da AET
+                    int quant = aet.Count();
+                    for(int i=0; i<(quant/2)+1; i++)
+                    {
+                        NoEdgeTable par1 = aet.GetNoEdgeTableAt(i*2);
+                        NoEdgeTable par2 = aet.GetNoEdgeTableAt(i*2 + 1);
+
+                        //pintar do (xMin par1) até (xMin par2)
+                        int limite = (int)Math.Ceiling(par2.xMin);
+                        for (int j = (int)Math.Ceiling(par1.xMin); j < limite; j++)
+                            PintaPixel(src, stride, width, height, j, y, Color.Azure.R, Color.Azure.G, Color.Azure.B);
+                    }
+
+                    //atualizar os xMin utilizando os incrementos
+                    for(int i=0; i<aet.Count(); i++)
+                        aet.GetNoEdgeTableAt(i).Incrementar();
+
+                    y++;
+                }
+            }
+
+            imageBitmap.UnlockBits(data);
+        }
+
+        public static void FormarEdgeTable(EdgeTable[] et, Poligono p)
+        {
+            //formar a et, primeira parte do algoritmo para rasterização de polígonos
+        }
+
+        public static bool IsVectorEdgeEmpty(EdgeTable[] et, int tamanho)
+        {
+            //verificar se o vetor de Edge Table possui algum elemento para ser verificado
+            bool possuiElementos = false;
+            for(int i=0; i<tamanho && !possuiElementos; i++)
+                if(et[i] != null)
+                    possuiElementos = true;
+            return possuiElementos;
         }
     }
 }

@@ -105,15 +105,7 @@ namespace ProcessamentoImagens
 
         private void ControlarBotoes(bool flag)
         {
-            btnEquacaoReta.Enabled = flag;
-            btnDDA.Enabled = flag;
-            btnPontoMedioRetas.Enabled = flag;
-
-            btnEquacaoCircunferencia.Enabled = flag;
-            btnTrigonometria.Enabled = flag;
-            btnPontoMedioCircunferencia.Enabled = flag;
-
-            btnPontoMedioElipse.Enabled = flag;
+            flpPrimitivas.Enabled = flag;
             btnLimpar.Enabled = flag;
 
             btnCancelar.Visible = !flag;
@@ -136,46 +128,12 @@ namespace ProcessamentoImagens
 
         private void AtivarBotoesTransformacoes2D()
         {
-            // btnAplicarEscala.Enabled = true;
-            // btnAplicarCisalhamento.Enabled = true;
-            // btnAplicarReflexao.Enabled = true;
-            // btnAplicarRotacao.Enabled = true;
-            // btnAplicarTranslacao.Enabled = true;
-            // btnAplicarTudo2d.Enabled = true;
-
-            // numUpDownEscalaX.Enabled = true;
-            // numUpDownEscalaY.Enabled = true;
-            // numUpDownTranslacaoX.Enabled = true;
-            // numUpDownTranslacaoY.Enabled = true;
-            // numUpDownGrauRotacao.Enabled = true;
-            // numUpDownXCisalhamento.Enabled = true;
-            // numUpDownYCisalhamento.Enabled = true;
-            // checkBoxXReflexao.Enabled = true;
-            // checkBoxYReflexao.Enabled = true;
-
-            flowLayoutPanel5.Enabled = true;
+            flpTransformacoes.Enabled = true;
         }
 
         private void DesativarBotoesTransformacoes2D()
         {
-            // btnAplicarEscala.Enabled = false;
-            // btnAplicarCisalhamento.Enabled = false;
-            // btnAplicarReflexao.Enabled = false;
-            // btnAplicarRotacao.Enabled = false;
-            // btnAplicarTranslacao.Enabled = false;
-            // btnAplicarTudo2d.Enabled = false;
-
-            // numUpDownEscalaX.Enabled = false;
-            // numUpDownEscalaY.Enabled = false;
-            // numUpDownTranslacaoX.Enabled = false;
-            // numUpDownTranslacaoY.Enabled = false;
-            // numUpDownGrauRotacao.Enabled = false;
-            // numUpDownXCisalhamento.Enabled = false;
-            // numUpDownYCisalhamento.Enabled = false;
-            // checkBoxXReflexao.Enabled = false;
-            // checkBoxYReflexao.Enabled = false;
-
-            flowLayoutPanel5.Enabled = false;
+            flpTransformacoes.Enabled = false;
         }
 
         private void btnAddPoligono_Click(object sender, EventArgs e)
@@ -186,6 +144,8 @@ namespace ProcessamentoImagens
 
             ControlarBotoes(!addPoligono);
             MudarBotaoADDPoligono(addPoligono);
+            btnExcluirPoligono.Visible = false;
+            btnPreencherPoligono.Visible = false;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -450,6 +410,7 @@ namespace ProcessamentoImagens
                 btnExcluirPoligono.Visible = false;
                 lbVertices.Visible = false;
                 listViewVertices.Visible = false;
+                btnPreencherPoligono.Visible = false;
                 DesativarBotoesTransformacoes2D();
                 Desenhar();
                 return;
@@ -462,6 +423,7 @@ namespace ProcessamentoImagens
 
             //aparece o botões: exclusão e transformações
             btnExcluirPoligono.Visible = true;
+            btnPreencherPoligono.Visible = true;
             AtivarBotoesTransformacoes2D();
 
             //limpa o listView dos vértices
@@ -739,6 +701,20 @@ namespace ProcessamentoImagens
                     Filtros.ImagemBranca(imageBitmap);
                     Desenhar();
                 }
+            }
+        }
+
+        private void btnPreencherPoligono_Click(object sender, EventArgs e)
+        {
+            if(listViewPoligono.SelectedItems.Count != 0)
+            {
+                ListViewItem itemPoligono = listViewPoligono.SelectedItems[0];
+                Poligono poligono = (Poligono)itemPoligono.Tag;
+                Desenhar();
+
+                Filtros.PreencherPoligonoFloodFill(imageBitmap, poligono);
+                //Filtros.PreencherPoligonoScanlineAET(imageBitmap, poligono);
+                pictBoxImg1.Refresh();
             }
         }
     }
